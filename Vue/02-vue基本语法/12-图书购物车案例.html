@@ -1,0 +1,126 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #table {
+        border: 1px solid #f3f3f3;
+      }
+      #table .tr th {
+        background: #f3f3f3;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app">
+      <div v-if="car.length">
+        <table border="1" cellspacing="0" cellpadding="10" id="table">
+          <tr class="tr">
+            <th></th>
+            <th>书籍名称</th>
+            <th>出版日期</th>
+            <th>价格</th>
+            <th>购买数量</th>
+            <th>操作</th>
+          </tr>
+          <tr v-for="(item,index) in car" :key="item.id" class="tr">
+            <td>{{item.id}}</td>
+            <td>{{item.bookName}}</td>
+            <td>{{item.publishDate}}</td>
+            <td>{{item.price | showPrice}}</td>
+            <td>
+              <button @click="add(index)">+</button>
+              <span>{{item.num}}</span>
+              <button @click="sub(index)" :disabled="item.num <= 0 ">-</button>
+            </td>
+            <td><button @click="move(index)">移除</button></td>
+          </tr>
+        </table>
+        <br />
+        <!--  "|" 符号后可加过滤器 -->
+        <div>总价：{{totalPrice | showPrice}}</div>
+      </div>
+      <h2 v-else>购物车为空</h2>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+        car: [
+          {
+            id: 1,
+            bookName: "《算法导论》",
+            publishDate: "2016-9",
+            price: 85.0,
+            num: 0,
+          },
+          {
+            id: 2,
+            bookName: "《如何征服少男少女》",
+            publishDate: "1998-5",
+            price: 25.0,
+            num: 0,
+          },
+          {
+            id: 3,
+            bookName: "《碎玉投珠》",
+            publishDate: "2020-6",
+            price: 48.0,
+            num: 0,
+          },
+          {
+            id: 4,
+            bookName: "《我在惊悚游戏里封神》",
+            publishDate: "2022-4",
+            price: 108.0,
+            num: 0,
+          },
+          {
+            id: 5,
+            bookName: "《高等数学》",
+            publishDate: "2012-3",
+            price: 38.0,
+            num: 0,
+          },
+        ],
+        totalPrice: 0,
+      },
+      methods: {
+        add(index) {
+          this.car[index].num++;
+          this.totalPrice = 0;
+          for (let item of this.car) {
+            this.totalPrice += item.price * item.num;
+          }
+        },
+        sub(index) {
+          this.car[index].num--;
+          this.totalPrice = 0;
+          for (let item of this.car) {
+            this.totalPrice += item.price * item.num;
+          }
+        },
+        move(index) {
+          this.car.splice(index, 1);
+          this.totalPrice = 0;
+          for (let item of this.car) {
+            this.totalPrice += item.price * item.num;
+          }
+        },
+      },
+      computed: {},
+      // 过滤器
+      filters: {
+        showPrice(price) {
+          return `￥${price.toFixed(2)}`;
+        },
+      },
+    });
+  </script>
+</html>

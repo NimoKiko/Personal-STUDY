@@ -1,0 +1,91 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #box {
+        width: 100px;
+        height: 100px;
+        background-color: #bfa;
+        position: absolute;
+        left: 0;
+        top: 100px;
+      }
+    </style>
+  </head>
+  <body>
+    <button id="start">动一动~</button>
+    <button id="Stop">不要了~不要了~</button>
+    <button id="turnLeft">另一边也要~</button>
+    <button id="turnDown">下面也要~</button>
+    <button id="turnTop">弄弄上面~</button>
+    <div id="box" style="top: 50px; left: 0"></div>
+
+    <script>
+      let start = document.getElementById("start");
+      let Stop = document.getElementById("Stop");
+      let turnLeft = document.getElementById("turnLeft");
+      let turnDown = document.getElementById("turnDown");
+      let turnTop = document.getElementById("turnTop");
+      let box = document.getElementById("box");
+      let timer;
+      let time = 20;
+      let dir = 20;
+
+      start.onclick = (res) => {
+        clearInterval(timer);
+        timer = setInterval(() => {
+          let left = box.style.left;
+          let x = parseFloat(left);
+          x = x + dir;
+          left = x + "px";
+          box.style.left = left;
+          console.log(left);
+        }, time);
+      };
+
+      turnLeft.onclick = (res) => {
+        clearInterval(timer);
+        timer = setInterval(() => {
+          let left = box.style.left;
+          let x = parseFloat(left);
+          x = x - dir;
+          left = x + "px";
+          box.style.left = left;
+          console.log(left);
+        }, time);
+      };
+
+      turnDown.onclick = (res) => {
+        clearInterval(timer);
+        timer = setInterval(() => {
+          let top = box.style.top;
+          let y = parseFloat(top);
+          y = y + dir;
+          top = y + "px";
+          box.style.top = top;
+          console.log(top);
+        }, time);
+      };
+
+      turnTop.onclick = (res) => {
+        clearInterval(timer);
+        timer = setInterval(() => {
+          let top = box.style.top;
+          let y = parseFloat(top);
+          y = y - dir;
+          top = y + "px";
+          box.style.top = top;
+          console.log(top);
+        }, time);
+      };
+
+      Stop.onclick = (res) => {
+        clearInterval(timer);
+      }
+    </script>
+  </body>
+</html>

@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+
+  <body>
+    <script>
+        /*
+          this:
+            this指向的是函数调用的时候所在的环境，如下例：
+                定义一个函数fun()和全局变量name，当直接调用fun()的时候，其实是window这个对象调用
+                的函数，所以this指向window，所以输出的name是全局的name。
+                定义了两个对象obj1和obj2，当调用obj1.sayName()的时候，this指向调用这个函数的环境(对象)，
+                也就是指向obj1，所以打印的name是obj1中的name属性。obj2同上。
+        */
+
+        var name = '全局';
+
+        function fun(){
+            console.log(this.name);    
+        }
+
+        var obj1 = {
+            name:'俊子',
+            sayName: fun,
+        }
+        var obj2 = {
+            name:'龚俊',
+            sayName: fun
+        }
+        obj1.sayName();
+    </script>
+  </body>
+</html>

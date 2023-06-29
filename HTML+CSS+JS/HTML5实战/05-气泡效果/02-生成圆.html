@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      canvas {
+        background: grey;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="500" height="500"></canvas>
+  </body>
+  <script>
+    window.onload = function () {
+      var canvasNode = document.querySelector("canvas");
+      if (canvasNode.getContext) {
+        var ctx = canvasNode.getContext("2d");
+
+        // 往arr中注入随机圆的信息
+        var arr = [];
+        setInterval(() => {
+          var x = Math.random() * canvasNode.width;
+          var y = Math.random() * canvasNode.height;
+          var r = Math.random() * 50;
+          var rgbax = Math.round(Math.random() * 255);
+          var rgbay = Math.round(Math.random() * 255);
+          var rgbaz = Math.round(Math.random() * 255);
+          var tran = Math.random();
+          arr.push({
+            x: x,
+            y: y,
+            r: r,
+            rgbax: rgbax,
+            rgbay: rgbay,
+            rgbaz: rgbaz,
+            tran: tran,
+          });
+        }, 100);
+
+        setInterval(() => {
+          ctx.clearRect(0, 0, canvasNode.width, canvasNode.height);
+
+          // 修改圆的半径，透明度等信息
+          for (let i = 0; i < arr.length; i++) {
+            if (arr[i].tran <= 0) {
+              arr.splice(i, 1);
+            }
+            arr[i].r++;
+            arr[i].tran -= 0.01;
+          }
+
+          // 将数组中的圆绘制到画布上
+          for (let i = 0; i < arr.length; i++) {
+            ctx.save();
+            ctx.fillStyle = `rgba(${arr[i].rgbax},${arr[i].rgbay},${arr[i].rgbaz},${arr[i].tran})`;
+            ctx.beginPath();
+            ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.restore();
+          }
+        }, 1000/60);
+      }
+    };
+  </script>
+</html>

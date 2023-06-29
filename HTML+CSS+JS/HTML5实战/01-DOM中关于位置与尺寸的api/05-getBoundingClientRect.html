@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        /* overflow: hidden; */
+      }
+      #inner1 {
+        position: relative;
+        left: 100px;
+        top: 200px;
+        background: deeppink;
+        width: 300px;
+        height: 200px;
+      }
+      #inner2 {
+        position: absolute;
+        left: 100px;
+        top: 50px;
+        background: deepskyblue;
+        width: 150px;
+        height: 230px;
+      }
+    </style>
+  </head>
+  <body style="height: 3000px; width: 3000px">
+    <div id="inner1">
+      inner1
+      <div id="inner2">inner2</div>
+    </div>
+    <script>
+      // 获取元素在页面中的位置
+      // 绝对位置：到body的距离
+      // 相对位置：到视口的距离
+      window.onscroll = function () {
+        var inner2 = document.getElementById("inner2");
+        var point = inner2.getBoundingClientRect();
+        console.log(point);
+        /*
+          这个API的返回值中：
+           - height和width是元素的绝对位置
+           - top,bottom,left,right是元素的相对位置
+        
+        */
+      };
+    </script>
+  </body>
+</html>

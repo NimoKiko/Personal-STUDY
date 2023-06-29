@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <!-- 遍历数组 -->
+        <ul>
+            <li v-for="item in stars">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,index) in stars">{{index}}--{{item}}</li>
+        </ul>
+        <!-- 遍历对象 -->
+        <ul>
+            <li v-for="item in stars2">{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,key) in stars2">{{key}}--{{item}}</li>
+        </ul>
+        <ul>
+            <li v-for="(item,key,index) in stars2">{{index}}--{{key}}--{{item}}</li>
+        </ul>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+        stars:['龚俊','韩烨','徐斯'],
+        stars2:{
+            name:'龚俊',
+            age:30,
+            height:"186cm"
+        }
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>

@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <father></father>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    const son = Vue.extend({
+      template: `
+        <div>
+          <h2>我是子组件</h2>
+          <p>我是内容</p>
+          <p>我是内容</p>
+          <p>我是内容</p>
+        </div>
+        `,
+    });
+    /*
+      在组件中注册组件，可以实现组件嵌套的效果，即所谓的父子组件
+    */
+    const father = Vue.extend({
+      template: `
+        <div>
+          <h2>我是父组件</h2>
+          <p>我是内容</p>
+          <p>我是内容</p>
+          <p>我是内容</p>
+          <son></son>
+        </div>
+        `,
+      // 在父组件中注册子组件
+      components: {
+        son: son,
+      },
+    });
+
+    // 根组件
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+      components: {
+        father: father,
+      },
+    });
+  </script>
+</html>

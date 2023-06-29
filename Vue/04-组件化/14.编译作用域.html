@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        编译作用域:
+          - 在使用标签的时候，在标签内添加/寻找的属性都会在该标签所属的模板中找
+            简单来说就是，父组件使用子组件的时候，如果子组件标签内绑定了一些数据，也只会在父组件的
+            作用域中寻找。
+     -->
+    <div id="app">
+        <!-- 
+            这个v-show绑定了isShow，在子组件的data中也有isShow，
+            但是实际上看的是Vue实例也就是父组件中的data中的isShow，
+            所以会显示
+         -->
+        <cpn v-show="isShow"></cpn>
+    </div>
+  </body>
+  <template id="cpn">
+    <div>
+        <h1>---子组件---</h1>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    const cpn = {
+        template: '#cpn',
+        data() {
+            return {
+                isShow: false,
+            }
+        },
+    }
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+        isShow: true
+      },
+      methods: {},
+      computed: {},
+      components: {cpn},
+    });
+  </script>
+</html>

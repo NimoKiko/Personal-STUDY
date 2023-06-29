@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      {{message}}
+      <button @click="change">change</button>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    // 编程范式：声明式编程
+    const app = new Vue({
+      el: "#app",
+      data: {
+        //定义一些数据
+        message: "龚俊好帅！！",
+      },
+      methods: {
+        change() {
+          this.message = "真的好帅啊";
+        },
+      },
+      /*
+        beforeCreate()：
+          - Vue实例创建之前执行
+      */
+      beforeCreate() {},
+      /*
+        created():
+          - Vue实例创建完成时执行
+          - 此时虚拟DOM还没有挂载到真实DOM上
+      */
+      created() {},
+      /*
+        beforeMount()：
+          - 虚拟DOM挂载到真实DOM之前执行
+      */
+      beforeMount() {},
+      /*
+        mounted()：
+          - 虚拟DOM挂载到真实DOM之后执行
+      */
+      mounted() {},
+      /*
+        beforeUpdate()：
+          - 检测到数据要修改之前执行
+      */
+      beforeUpdate() {
+        console.log("修改之前");
+      },
+      /*
+        updated()：
+          - 数据修改完之后执行
+      */
+      updated() {
+        console.log("修改了");
+      },
+    });
+  </script>
+</html>

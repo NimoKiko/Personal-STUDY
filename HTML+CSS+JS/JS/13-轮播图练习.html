@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      .pic-box {
+        margin: 10px auto;
+        width: 500px;
+        height: 500px;
+      }
+      .btn-box {
+        width: fit-content;
+        margin: 10px auto;
+      }
+      #img {
+        width: 500px;
+        height: 500px;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="img-box" class="pic-box">
+      <img id="img" src="../CSS练习/pic/1.jpg" alt="" />
+    </div>
+    <div class="btn-box">
+      <button id="next">下一张</button>
+      <button id="front">上一张</button>
+    </div>
+
+    <script>
+      let imgList = [
+        "../CSS练习/pic/1.jpg",
+        "../CSS练习/pic/2.jpg",
+        "../CSS练习/pic/3.jpg",
+        "../CSS练习/pic/4.jpg",
+        "../CSS练习/pic/5.jpg",
+        "../CSS练习/pic/6.jpg",
+      ];
+      let imgBox = document.getElementById("img-box");
+      let img = document.getElementById("img");
+      let next = document.getElementById("next");
+      let front = document.getElementById("front");
+      let currentImg = 0;
+
+      //创建定时器
+      let timer;
+
+      next.onclick = (res) => {
+        currentImg++;
+        currentImg = currentImg % imgList.length;
+        img.src = imgList[currentImg];
+      };
+      front.onclick = res => {
+        currentImg--;
+        currentImg = currentImg % imgList.length;
+        img.src = imgList[currentImg];
+      }
+      imgBox.onmouseenter = (res) => {
+        timer = setInterval((res) => {
+          console.log(currentImg);
+          currentImg++;
+          currentImg = currentImg % imgList.length;
+          img.src = imgList[currentImg];
+        }, 500);
+      };
+      imgBox.onmouseleave = (res) => {
+        clearInterval(timer);
+      }
+    </script>
+  </body>
+</html>
+ 

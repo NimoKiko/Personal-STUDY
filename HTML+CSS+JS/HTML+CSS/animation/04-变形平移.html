@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            perspective: 800px;
+        }
+
+        .box1{
+            width: 200px;
+            height: 200px;
+            background-color: #bfa;
+            margin: 0px auto;
+            /* 
+                变形：指通过CSS改变元素的形状或者位置
+                - 变形不会影响页面的布局
+                - transform 用来设置变形效果
+
+                变形效果：
+                1. 平移：
+                    translateX() 沿着x轴方向平移
+                    translateY() 沿着y轴方向平移
+                    translateZ() 沿着z轴方向平移
+                    平移元素时，百分比相对于自身进行计算
+                    z轴平移属于立体效果（近大远小），默认情况下网页不支持透视。如果需要看见效果
+                    必须设置网页视距
+            */
+            /* transform: translateX(100px); */
+            transform: translateX(50%);
+        }
+        .box2{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(245, 152, 21);
+            margin: 0 auto;
+        }
+        .box3{
+            width: 200px;
+            height: 200px;
+            background-color: rgb(23, 135, 92);
+            margin: 0 auto;
+            /* transform: translateX(-100px); */
+            transition: all 1s;
+        }
+        .box3:hover{
+            transform: translateZ(100px);
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+    <div class="box2"></div>
+    <div class="box3"></div>
+</body>
+</html>

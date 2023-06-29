@@ -1,0 +1,19 @@
+/*
+  在less中可以进行加减乘除运算
+*/
+.border(){
+    width: 500px;
+    height: 500px;
+    border: 1px solid black;
+    margin: 20px auto;
+}
+
+.outer{
+    .border();
+
+    .inner{
+        width: (100 + 100px);
+        height: (100 + 100px);
+        border: 1px solid red;
+    }
+}

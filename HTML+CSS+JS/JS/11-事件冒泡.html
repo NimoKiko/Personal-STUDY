@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        #box1{
+            width: 500px;
+            height: 500px;
+            background-color: rgb(220, 52, 22);
+        }
+        #box2{
+            width: 300px;
+            height: 300px;
+            background-color:rgb(248, 173, 11);
+        }
+        #box3{
+            width: 100px;
+            height: 100px;
+            background-color:rgb(24, 85, 176);
+        }
+        #box4{
+            width: 50px;
+            height: 50px;
+            background-color:rgb(115, 62, 179);
+            position: absolute;
+        }
+    </style>
+</head>
+<body>
+    <div id="box1">
+        <div id="box2">
+            <div id="box3">
+                <div id="box4" draggable="true"></div>
+            </div>
+        </div>
+    </div>
+
+    <script>
+        /*
+          事件冒泡：
+            当一个元素的事件触发时，其祖先元素的事件也会依次触发
+        
+        */
+    
+        var box1 = document.getElementById("box1");
+        var box2 = document.getElementById("box2");
+        var box3 = document.getElementById("box3");
+        var box4 = document.getElementById("box4");
+
+        box1.onclick =  (res) => {
+            console.log("click box1");
+        }
+        box2.onclick =  (res) => {
+            console.log("click box2");
+        }
+        box3.onclick =  (res) => {
+            console.log("click box3");
+        }
+        box4.onclick =  (res) => {
+            console.log("click box4");
+            // 取消冒泡
+            res.cancelBubble = "ture";
+        }
+        // document.onmousemove = res => {
+        //     console.log(res);
+        //     let left = res.clientX;
+        //     let top = res.clientY;
+
+        //     box4.style.left = left + "px";
+        //     box4.style.top = top + "px";
+        // }
+        // box2.onmousemove = res => {
+        //     res.cancelBubble = true;
+        // }
+    </script>
+</body>
+</html>

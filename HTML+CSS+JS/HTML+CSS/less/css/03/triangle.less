@@ -1,0 +1,33 @@
+
+// 向右
+.triangle(R,@w,@c) {
+  width: 0;
+  height: 0;
+  border-width: @w;
+  border-style: solid;
+  border-color: transparent transparent transparent @c;
+}
+// 向左
+.triangle(L,@w,@c) {
+  width: 0;
+  height: 0;
+  border-width: @w;
+  border-style: solid;
+  border-color: transparent @c transparent transparent;
+}
+// 向上
+.triangle(T,@w,@c) {
+  width: 0;
+  height: 0;
+  border-width: @w;
+  border-style: solid;
+  border-color: transparent transparent @c transparent ;
+}
+// 向下
+.triangle(B,@w,@c) {
+  width: 0;
+  height: 0;
+  border-width: @w;
+  border-style: solid;
+  border-color:@c transparent transparent transparent ;
+}

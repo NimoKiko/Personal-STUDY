@@ -1,0 +1,102 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+      canvas {
+        background: rgb(26, 57, 100);
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+      }
+    </style>
+  </head>
+  <body>
+    <canvas width="200" height="400"></canvas>
+  </body>
+  <script>
+    window.onload = function () {
+      var oc = document.querySelector("canvas");
+      if (oc.getContext) {
+        var ctx = oc.getContext("2d");
+
+        // 一个用来存储圆的数组
+        var arr = [];
+        // 生成圆的信息
+        setInterval(() => {
+          // 设置一些基础圆的信息
+          var x = Math.round(Math.random() * oc.width);
+          var y = Math.round(Math.random() * 30) + 370;
+          var r = Math.round(Math.random() * 10);
+          var red = Math.round(Math.random() * 255);
+          var green = Math.round(Math.random() * 255);
+          var blue = Math.round(Math.random() * 255);
+          var tran = Math.random();
+          var deg = 0;
+          var startX = x;
+          var startY = y;
+          var stepX = Math.random() * 20 + 10;
+          var stepY = 50;
+          arr.push({
+            x: x,
+            y: y,
+            r: r,
+            red: red,
+            green: green,
+            blue: blue,
+            tran: 1,
+            deg: deg,
+            startX: startX,
+            startY: startY,
+            stepX: stepX,
+            stepY: stepY,
+          });
+        }, 100);
+
+        // 绘制圆
+        // var deg = 0;
+        // var stepX = 1;
+        // var stepY = 100;
+        setInterval(() => {
+          // console.log(arr);
+          ctx.clearRect(0, 0, oc.width, oc.height);
+          for (let i = 0; i < arr.length; i++) {
+            arr[i].deg++;
+            arr[i].y = (
+              arr[i].startY -
+              ((arr[i].deg * Math.PI) / 180) * arr[i].stepY
+            );
+            // console.log(arr[i].y);
+            arr[i].x =
+              arr[i].startX +
+              Math.sin((arr[i].deg * Math.PI) / 180) * arr[i].stepX;
+              // console.log(arr[i].x);
+            if (arr[i].tran <= 0) {
+              arr.splice(i, 1);
+            }
+            arr[i].tran -= 0.002;
+          }
+          for (let i = 0; i < arr.length; i++) {
+            ctx.save();
+            ctx.fillStyle = `rgba(${arr[i].red},${arr[i].green},${arr[i].blue},${arr[i].tran})`;
+            ctx.beginPath();
+            ctx.arc(arr[i].x, arr[i].y, arr[i].r, 0, 2 * Math.PI);
+            ctx.fill();
+            ctx.restore();
+          }
+        }, 1000 / 60);
+      }
+    };
+  </script>
+</html>

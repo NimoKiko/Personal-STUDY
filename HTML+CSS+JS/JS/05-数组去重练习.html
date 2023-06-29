@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    
+    <script>
+
+        var arr = [1,2,3,2,1,2,3,4,2,1,5,6,8,4,3,9,0];
+        arr.sort();
+        console.log(arr);
+        arr.forEach((item,index) => {
+            // console.log(index,item);
+            for(var i = index + 1 ; i < arr.length ; i++){
+                if(item == arr[i]){
+                    arr.splice(i,1);
+                    i--;
+                }
+            }
+        })
+        console.log(arr);
+    </script>
+</body>
+</html>

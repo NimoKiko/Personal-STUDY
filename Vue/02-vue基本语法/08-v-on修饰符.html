@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <div @click="divClick">
+            <!-- 
+                stop修饰符：组织事件冒泡
+             -->
+            <button @click.stop="btnClick">button</button>
+            <!-- 
+                enter修饰符：监听enter键
+             -->
+            <input type="text" @keydown.enter="keydown">
+            <!-- 
+                once修饰符：只能监听一次
+             -->
+            <button @click.once="btnClick1">button</button>
+        </div>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        message: "龚俊好帅！！",
+      },
+      methods: {
+        btnClick(){
+            console.log("btn click");
+        },
+        divClick(){
+            console.log('div click');
+            
+        },
+        keydown(e){
+            console.log(e);
+        },
+        btnClick1(){
+            console.log('打印了');
+            
+        }
+      },
+    });
+  </script>
+</html>

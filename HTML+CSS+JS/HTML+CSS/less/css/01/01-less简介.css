@@ -1,0 +1,18 @@
+.box1 {
+  width: 500px;
+  height: 500px;
+  background: #f55c5c;
+  position: relative;
+}
+.box1 .box2 {
+  width: 200px;
+  height: 200px;
+  background: #23b582;
+  position: absolute;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  margin: auto;
+}
+/*# sourceMappingURL=./01-less简介.css.map */

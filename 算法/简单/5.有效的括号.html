@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var isValid = function (s) {
+        let arr = [];
+        // 把字符串拆分到数组里
+        for (let i = 0; i < s.length; i++) {
+          arr.push(s.slice(i, i + 1));
+        }
+        if (arr.length % 2 != 0 || arr.length == 0) return false;
+        let stack = [];
+        for (let item of arr) {
+          if (item == "(" || item == "{" || item == "[") {
+            stack.push(item);
+          }
+          if (item == ")" || item == "}" || item == "]") {
+            if (stack.length == 0) return false;
+          }
+          if (item == ")" && stack[stack.length - 1] != "(") {
+            return false;
+          }
+          if (item == ")" && stack[stack.length - 1] == "(") {
+            stack.pop();
+          }
+
+          if (item == "}" && stack[stack.length - 1] != "{") {
+            return false;
+          }
+          if (item == "}" && stack[stack.length - 1] == "{") {
+            stack.pop();
+          }
+
+          if (item == "]" && stack[stack.length - 1] != "[") {
+            return false;
+          }
+          if (item == "]" && stack[stack.length - 1] == "[") {
+            stack.pop();
+          }
+        }
+        console.log(stack);
+        if (stack.length == 0) {
+          return true;
+        } else {
+          return false;
+        }
+      };
+      let s = "((";
+      console.log(isValid(s));
+    </script>
+  </body>
+</html>

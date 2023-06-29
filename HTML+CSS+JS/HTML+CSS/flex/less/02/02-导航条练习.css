@@ -1,0 +1,33 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  margin: 0 auto;
+  background-color: #ebebeb;
+}
+.container .nav {
+  width: 1210px;
+  height: 48px;
+  line-height: 48px;
+  list-style: none;
+  margin: 0 auto;
+  display: flex;
+  justify-content: center;
+}
+.container .nav li {
+  flex-grow: 1;
+}
+.container .nav li a {
+  display: block;
+  text-decoration: none;
+  text-align: center;
+  font-size: 16px;
+  color: #4b4b4b;
+}
+.container .nav li a:hover {
+  background-color: #a6a6a6;
+  color: white;
+  font-weight: bold;
+}
+/*# sourceMappingURL=./02-导航条练习.css.map */

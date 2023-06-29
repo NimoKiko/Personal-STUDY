@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <span class="box1" v-if="loginMethod">
+            <label>用户账号：</label>
+            <!-- 
+                key属性：
+                  - 当进行切换的时候vue底层会优先进行复用而不是创建新的input，这就导致切换的时候
+                    虽然input标签是切换了，但是里面的内容还是不变
+                  - 添加key属性，底层会先对比
+             -->
+            <input type="text" placeholder="账号" key="account">
+        </span>
+        <span class="box2" v-if="!loginMethod">
+            <label>邮箱登录：</label>
+            <input type="text" placeholder="邮箱" key="e-mail">
+        </span>
+        <button @click="change">切换方式</button>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+        loginMethod:true,
+      },
+      methods: {
+        change(){
+            this.loginMethod = !this.loginMethod;
+        }
+      },
+      computed: {},
+    });
+  </script>
+</html>

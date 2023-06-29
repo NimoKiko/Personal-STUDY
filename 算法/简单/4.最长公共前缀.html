@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var longestCommonPrefix = function (strs) {
+        let flag = true;
+        let currentItem = strs[0].charAt(0);
+        let minLength = 9999;
+        let res = "";
+        // 找到最短字符串
+        for (let item of strs) {
+          if (item.length < minLength) {
+            minLength = item.length;
+          }
+        }
+        for (let i = 0; i < minLength; i++) {
+          for (let j = 0; j < strs.length; j++) {
+            if (strs[j].charAt(i) != currentItem) {
+              flag = false;
+              break;
+            }
+            if (j == strs.length - 1) {
+              res += currentItem;
+              currentItem = strs[0].charAt(i + 1);
+            }
+          }
+          if(!flag) break;
+        }
+      };
+      let strs = ["flower", "flow", "floght", "flo", "float", "flox"];
+      longestCommonPrefix(strs);
+    </script>
+  </body>
+</html>

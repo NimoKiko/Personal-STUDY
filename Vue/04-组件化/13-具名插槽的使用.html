@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        具名插槽：
+          - 给插槽命名，可以在使用组件的时候给指定的插槽进行扩展修改
+
+     -->
+    <div id="app">
+      <cpn><span slot="center">标题</span></cpn>
+      <cpn><i slot="left">标题</i></cpn>
+      <cpn><button slot="right">标题</button></cpn>
+    </div>
+  </body>
+  <!-- 子组件 -->
+  <template id="cpn">
+    <div>
+      <h1>---子组件---</h1>
+      <slot name="left"><span>左边</span></slot>
+      <slot name="center"><span>中间</span></slot>
+      <slot name="right"><span>右边</span></slot>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {};
+      },
+    };
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+      components: { cpn },
+    });
+  </script>
+</html>

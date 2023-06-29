@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      #app {
+        width: 10px;
+        height: 10px;
+        background: red;
+        position: absolute;
+        left: 400px;
+        top: 300px;
+      }
+      .follow{
+        position: absolute;
+        width: 1px;
+        height: 1px;
+        background: black;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="app"></div>
+  </body>
+  <script>
+    /*
+        1. 弧度和角度的转化：rad：弧度；deg：角度
+          1deg = PI / 180deg （弧度）,
+          1rad = 180deg / PI （度）
+    
+    */
+    window.onload = function () {
+      var appNode = document.querySelector("#app");
+
+      // 获取元素的起点位置
+      var startX = appNode.offsetLeft;
+      var startY = appNode.offsetTop;
+      var deg = 0;
+      var stepY = 100;
+      var stepX = 20;
+      setInterval(() => {
+        deg++;
+        // 横向
+        appNode.style.left = startX + (deg * Math.PI / 180) * stepX + "px";
+        // 纵向
+        appNode.style.top =
+          startY + Math.sin((deg * Math.PI) / 180) * stepY + "px";
+
+        var div = document.createElement("div");
+        div.classList.add("follow");
+        div.style.left = appNode.offsetLeft + "px";
+        div.style.top = appNode.offsetTop + "px"
+        document.body.appendChild(div);
+      }, 1);
+    };
+  </script>
+</html>

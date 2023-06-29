@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      //   var createCounter = function (n) {
+      //     arr.push(n)
+      //     return function () {
+      //       let newNum = arr[arr.length-1] + 1;
+      //       arr.push(newNum);
+      //       console.log(newNum);
+      //       return newNum-1;
+      //     };
+      //   };
+      //   var arr = []
+      var createCounter = function (n) {
+        return function () {
+          return n++;
+        };
+      };
+      const counter = createCounter(10);
+      //   console.log(counter);
+      console.log(counter());
+      console.log(counter());
+      console.log(counter());
+    //   counter();
+    //   counter();
+    //   counter();
+    </script>
+  </body>
+</html>

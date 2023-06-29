@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+
+      .container {
+        width: 800px;
+        height: 800px;
+        margin: 10px auto;
+        background-color: antiquewhite;
+        position: relative;
+        perspective: 800px;
+      }
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: #cbd;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        transition: all 2s;
+      }
+      .container:hover .box1 {
+        /* 
+          通过旋转，使元素沿着x，y，z轴旋转指定的角度
+          通过transform:rotate()实现
+            rotateZ()
+            rotateX()
+            rotateY()
+        */
+        /* turn表示圈 */
+        /* transform: rotateZ(1turn); */
+        /* deg表示度数 */
+        /* transform: rotateZ(1turn); */
+        transform: rotateY(180deg) translateZ(300px);
+         /* 设置背面隐藏 */
+        backface-visibility: hidden;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box1"></div>
+    </div>
+  </body>
+</html>

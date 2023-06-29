@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #inner1 {
+        position: relative;
+        background: deeppink;
+        width: 300px;
+        height: 200px;
+      }
+      #inner2 {
+        position: absolute;
+        left: 20px;
+        background: deepskyblue;
+        width: 150px;
+        height: 230px;
+      }
+      #inner3 {
+        position: fixed;
+        background: darkgreen;
+        width: 270px;
+        height: 180px;
+      }
+      #inner4 {
+        position: fixed;
+        background: darkred;
+        width: 500px;
+        height: 120px;
+      }
+    </style>
+  </head>
+  <body>
+    <!-- 
+        parenetNode:代表直接父级
+        offsetParenet:类似于包含块(有些兼容性问题)
+          1. 如果元素本身有fixed定位：
+            ==> offsetParent：null(不是火狐浏览器)
+            ==> offsetParent：body(火狐浏览器)
+          2. 如果元素本身不是fixed定位：
+            父级没有定位：
+                ==> offsetParent：body
+            父级有定位：
+                ==> offsetParent：null
+     -->
+    <div id="inner1">
+      <div id="inner2">
+        <div id="inner3">
+          <div id="inner4"></div>
+        </div>
+      </div>
+    </div>
+    <script>
+        window.onload = function(){
+            console.log(inner2.offsetLeft);
+        }
+    </script>
+  </body>
+</html>

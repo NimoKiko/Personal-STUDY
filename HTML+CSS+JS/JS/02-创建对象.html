@@ -1,0 +1,93 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 1.工厂模式
+      function person1(name, age) {
+        let obj = new Object();
+        obj.name = name;
+        obj.age = age;
+        return obj;
+      }
+      var std1 = person1("judy", 22);
+      // console.log(std1.name);
+      // console.log(std1 instanceof Object);
+
+      // 2.构造函数
+      function Person2(name, age) {
+        this.name = name;
+        this.age = age;
+        this.color = ["red", "white", "black"];
+        this.sayName = function () {
+          console.log(this.name);
+        };
+      }
+      var std2_1 = new Person2("judy", 21);
+      //   std2.sayName();
+      //   console.log(std2 instanceof Person2);
+      /*
+      构造函数存在的问题：
+        在构造函数内创建的函数，每次创建新的对象就会创建一次，会产生大量冗余。
+    */
+
+      // 3.原型模式
+      function Person3() {}
+      Person3.prototype.name = "tony";
+      Person3.prototype.age = 12;
+      Person3.prototype.color = ["red", "white", "black"];
+      Person3.prototype.sayName = function () {
+        console.log(this.name);
+      };
+
+      var std3_1 = new Person3();
+      var std3_2 = new Person3();
+      //   std3.sayName();
+      //   console.log(std3.age);
+      /*
+      原型模式存在的问题：
+        引用类型变量，例如数组，一旦加入原型，修改其中一个对象的变量就会修改全部对象。
+    */
+      //   std3_1.color.push("blue");
+      //   console.log(std3_1.color);
+      //   console.log(std3_2.color);
+
+      // 4.组合构造函数和原型模式
+      function Person4(name, age) {
+        this.name = name;
+        this.age = age;
+        this.color = ["red", "blue", "green"];
+      }
+      Person4.prototype.sayName = function () {
+        console.log(this.name);
+      };
+      var std4_1 = new Person4("jun", 11);
+      var std4_2 = new Person4("gong", 31);
+      std4_1.color.push("yello");
+      console.log(std4_1.color);
+      console.log(std4_2.color);
+
+      // 5.动态原型模式
+      function Person5(name,age) {
+        this.name = name;
+        this.age = age;
+        this.color = ['red','blue','green'];
+
+        // 判断原型中是否有方法
+        if(typeof this.sayName != 'function'){
+            Person5.prototype.sayName = function () {
+                console.log(this.name);
+            }
+        }
+
+      }
+      var std5_1 = new Person5('菌菇',32);
+      std5_1.sayName();
+    </script>
+  </body>
+</html>

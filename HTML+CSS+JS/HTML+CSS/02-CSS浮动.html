@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      /*
+        浮动：
+          1.通过设置浮动可以让一个元素向它的父元素的左侧或右侧移动
+          2.使用float属性来设置元素浮动
+          3.元素设置浮动之后，元素脱离文档流
+          4.可以使用这一特性将原本纵向排列的元素横向排列
+      */
+      .container{
+        width: 1000px;
+        height: 500px;
+        border: 1px solid black;
+        margin: 10px auto;
+      }
+      .box1 {
+        width: 200px;
+        height: 200px;
+        background-color: aquamarine;
+        float: left;
+      }
+      .box2{
+        width: 200px;
+        height: 200px;
+        background-color: brown;
+        float: left;
+      }
+      .ulBox{
+        float: left;
+        list-style: none;
+        padding: 0;
+      }
+      .ulBox li {
+        float: left;
+        margin-left: 10px;
+      }
+      /*
+        BFC（block formatting context）:会计格式化环境
+          - BFC是CSS中的隐含属性，可以为一个元素开启BFC
+            开启BFC的元素会变成一个独立的布局区域
+          - 元素开启BFC后的特点：
+            1.开启BFC的元素不会被浮动覆盖
+            2.开启BFC的元素，子元素和父元素边框不会重叠
+            3.开启BFC的元素，子元素可以包含浮动元素
+          - 开启BFC：
+            1.设置元素的浮动（副作用：会脱离文档流，丢失宽度）
+            2.将元素设置为行内块元素（副作用：会脱离文档流，丢失宽度）
+            3.将元素的overflow设置为hidden
+      */
+      .BFC{
+        border: 10px solid red;
+        /* 1.设置浮动开启BFC */
+        /* float: left; */
+        /* 2.设置行内块元素开启BFC */
+        /* display: inline-block; */
+        /* 3.设置overflow属性的hidden开启BFC */
+        overflow: hidden;
+      }
+      .box3{
+        width: 100px;
+        height: 100px;
+        background-color: blueviolet;
+        float: left;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="box1"></div>
+      <div class="box2"></div>
+      <ul class="ulBox">
+        <li>第一个</li>
+        <li>第二个</li>
+        <li>第三个</li>
+      </ul>
+    </div>
+    <div class="BFC">
+      <div class="box3"></div>
+    </div>
+  </body>
+</html>

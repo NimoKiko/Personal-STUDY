@@ -1,0 +1,41 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <button @click="btn">button</button>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+        arr: [10, 20, 80, 234, 23, 123, 56, 77, 1020],
+      },
+      methods: {
+        btn() {
+          let total = this.arr
+            .filter((n) => {
+              return n < 100;
+            })
+            .map((n) => {
+              return n * 2;
+            })
+            .reduce((pre, n) => {
+              return pre + n;
+            }, 0);
+
+            console.log(total);
+        },
+      },
+      computed: {},
+    });
+  </script>
+</html>

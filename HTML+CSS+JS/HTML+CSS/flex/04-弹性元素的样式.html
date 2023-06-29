@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        padding: 0;
+        margin: 0;
+      }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+      .container {
+        width: 800px;
+        border: 10px solid red;
+        list-style: none;
+        display: flex;
+        justify-content: space-evenly;
+      }
+      .container li {
+        width: 200px;
+        height: 100px;
+        flex-shrink: 0;
+        font-size: 50px;
+        text-align: center;
+        line-height: 100px;
+        /* 
+          1. flex-grow: 弹性元素的增长系数
+          2. flex-shrink：弹性元素的缩减系数
+          3. flex-basis: 元素基础长度,设置之后之前设置的width失效
+            - 注意：
+              1.如果主轴是横向的，flex-basis指定的是width，如果主轴是纵向的，指的是height
+              2.默认值是auto
+          4. flex: 可以用来简写以上三个属性
+            其对应的属性顺序是：flex: 增长 缩减 基础;
+          5. order: 决定弹性元素的排列顺序
+        */
+        flex-basis: 100px;
+      }
+      .container li:nth-child(1) {
+        width: 200px;
+        background-color: aquamarine;
+        order: 3;
+      }
+      .container li:nth-child(2) {
+        background-color: orange;
+        order: 2;
+      }
+      .container li:nth-child(3) {
+        background-color: pink;
+        order: 1;
+      }
+
+    </style>
+  </head>
+  <body>
+    <ul class="container">
+      <li>1</li>
+      <li>2</li>
+      <li>3</li>
+    </ul>
+  </body>
+</html>

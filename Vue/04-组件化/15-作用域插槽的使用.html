@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        作用域插槽:
+          - 父组件替换插槽的标签，但是内容由子组件决定
+     -->
+    <div id="app">
+      <cpn></cpn>
+      <cpn>
+        <!--
+             2. 要获取自组建的数据 必须写在template中，template需要有slot-scope属性
+         -->
+        <template slot-scope="slot">
+          <!-- 3. 然后就能在slot中获取子组件中绑定的数据 -->
+          <span v-for="item in slot.language">{{item}}--</span>
+        </template>
+      </cpn>
+      <cpn>
+        <template slot-scope="slot">
+          <span v-for="item in slot.language">{{item}}***</span>
+        </template>
+      </cpn>
+      <cpn>
+        <template slot-scope="slot">
+          <span>{{slot.language.join(" -- ")}}</span>
+        </template>
+      </cpn>
+    </div>
+  </body>
+  <!-- 子组件 -->
+  <template id="cpn">
+    <div>
+      <h1>---子组件---</h1>
+      <!-- 
+        1. 在子组件的slot上绑定数据，这个数据的名称可以自定义，
+            绑定的数据是子组件中国data中你想要传给父组件的数据
+      -->
+      <slot :language="language">
+        <ul>
+          <li v-for="item in language">{{item}}</li>
+        </ul>
+      </slot>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {
+          language: ["python", "java", "javascript", "go"],
+        };
+      },
+    };
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+      components: { cpn },
+    });
+  </script>
+</html>

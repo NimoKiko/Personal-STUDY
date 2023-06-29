@@ -1,0 +1,29 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        mustache语法：
+          - 使用{{}}将来获取定义在data中的数据
+          - 再{{}}中可以使用一些拼接，简单的运算
+     -->
+    <div id="app">{{message + str}}</div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    // 编程范式：声明式编程
+    const app = new Vue({
+      el: "#app",
+      data: {
+        //定义一些数据
+        message: "龚俊好帅！！",
+        str: '快冲！！！'
+      },
+    });
+  </script>
+</html>

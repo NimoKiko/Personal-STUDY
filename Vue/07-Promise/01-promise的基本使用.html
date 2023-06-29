@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      /*
+          Promise是做什么的？
+            Promise是异步编程的一种解决方案
+          一般什么时候会处理异步请求呢？
+            1. 网络请求
+        */
+
+      /*
+            基本语法：
+
+        */
+      //   setTimeout(() => {
+      //     console.log("hello world");
+      //   }, 1000);
+
+      new Promise((resolve, reject) => {
+        setTimeout(() => {
+          resolve("hello world");
+        }, 1000);
+      }).then((data) => {
+        console.log(data);
+        return new Promise((resolve, reject) => {
+          setTimeout(() => {
+            resolve("hello Vuejs");
+          }, 1000);
+        }).then((data) => {
+          console.log(data);
+        });
+      });
+    </script>
+  </body>
+</html>

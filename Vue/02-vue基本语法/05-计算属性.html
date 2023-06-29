@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <ul>
+        <li v-for="items in books">{{items.name}}</li>
+      </ul>
+      <h3>最贵的那本是：{{getMax}}元</h3>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    // 编程范式：声明式编程
+    const app = new Vue({
+      el: "#app",
+      data: {
+        //定义一些数据
+        message: "龚俊好帅！！",
+        books: [
+          { name: "计算机组成原理", price: 108 },
+          { name: "如何征服少男少女", price: 56 },
+          { name: "默读", price: 46 },
+          { name: "碎玉投珠", price: 98 },
+        ],
+      },
+      methods: {},
+      /*
+        计算属性：
+          - 定义方法和methods差不多，但是作用有点类似定义了data中的变量
+          - 计算属性有缓存，相比于methods调用一次就要运行一次来说，计算属性执行一次后除非计算结果发生变化，
+            否则不会重复执行
+      */
+      computed: {
+        getMax() {
+          var max = 0;
+          for (let book of this.books) {
+            if(book.price > max) {
+                max = book.price;
+            }
+          }
+          return max;
+        },
+      },
+    });
+  </script>
+</html>

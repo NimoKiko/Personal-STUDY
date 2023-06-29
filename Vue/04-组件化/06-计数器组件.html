@@ -1,0 +1,52 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+      <count></count>
+      <count></count>
+      <count></count>
+    </div>
+  </body>
+  <template id="count">
+    <div>
+      <h2>{{num}}</h2>
+      <button @click="add">+</button>
+      <button @click="min">-</button>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    // 注册全局组件
+    Vue.component("count", {
+      template: "#count",
+      data() {
+        return {
+          num: 0,
+        };
+      },
+      methods: {
+        add() {
+          this.num++;
+        },
+        min() {
+          this.num--;
+        },
+      },
+    });
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+      components: {},
+    });
+  </script>
+</html>

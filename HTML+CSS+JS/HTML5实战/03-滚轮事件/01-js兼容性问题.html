@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        *{
+            margin: 0;
+            padding: 0;
+        }
+        #wrap{
+            width: 200px;
+            height: 200px;
+            background: pink;
+        }
+        #box{
+            width: 200px;
+            height: 200px;
+            background: pink;
+            position: absolute;
+            left: 0;
+            right: 0;
+            top: 0;
+            bottom: 0;
+            margin: auto;
+        }
+    </style>
+  </head>
+  <body>
+    <div id="wrap">
+      wrap
+      <!-- <div id="inner">inner</div> -->
+    </div>
+    <div id="box"></div>
+    <script>
+      /*
+          ev||event
+          事件绑定(DOM2)：
+            事件流：事件捕获 ==> 事件处理 ==> 事件冒泡
+                捕获、冒泡的前提是：有嵌套的DOM结构
+
+        */
+       var wrap = document.querySelector("#wrap");
+
+       /*
+        ie8对于某些事件绑定函数不兼容
+       */
+       wrap.addEventListener("click",function(){
+        console.log(1);
+       })
+       wrap.addEventListener("click",function(){
+        console.log(2);
+       })
+       wrap.addEventListener("click",function(){
+        console.log(3);
+       })
+       /*
+        滚轮事件：
+            - onmousewheel:该事件不支持火狐浏览器
+            - 火狐浏览器应这样：
+                test.addEventListener("DOMMouseScroll",function(){})
+                通过绑定监听事件的方式来监听鼠标滚轮
+       */
+      var test = document.querySelector("#box");
+
+      test.onmousewheel = function(e){
+        console.log(e.wheelDelta);
+      }
+    // test.addEventListener("DOMMouseScroll",function(){
+    //     console.log("在滚");
+    // })
+    </script>
+  </body>
+</html>

@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+        body{
+            overflow: hidden;
+        }
+      .outer {
+        /* border: 1px solid red; */
+        width: fit-content;
+        animation: outRun 6s infinite linear;
+      }
+      .box1 {
+        /* border: 1px solid black; */
+        /* margin: 100px auto; */
+        margin-top: 100px;
+        height: 271px;
+        width: 132px;
+        background-image: url(../pic/mitu.png);
+        background-position: 0 0;
+        /* transition: all 500ms steps(3); */
+        animation: run 0.5s steps(3) infinite;
+      }
+      .box1:hover {
+        animation-play-state: paused;
+      }
+      @keyframes run {
+        to {
+          background-position: 0 0;
+        }
+        from {
+          background-position: -396px 0;
+        }
+      }
+      @keyframes outRun {
+        to {
+          margin-left: 100%;
+        }
+        from {
+          margin-left: -10%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="outer">
+      <div class="box1"></div>
+    </div>
+  </body>
+</html>

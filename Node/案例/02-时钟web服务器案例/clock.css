@@ -1,0 +1,45 @@
+body {
+  margin: 0;
+  padding: 0;
+}
+.container {
+  width: 100vw;
+  height: 100vh;
+  background: linear-gradient(120deg, #5289cc, #79cbca, #e684ae);
+  position: relative;
+}
+.time-wrap {
+  width: 40%;
+  height: 40%;
+  background: rgb(234, 234, 234);
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%);
+  top: 15%;
+  opacity: 0.6;
+  box-shadow: 0 0 10px 2px white;
+}
+.time {
+  text-align: center;
+  width: 100%;
+  font-size: 90px;
+  font-weight: bold;
+  position: absolute;
+  left: 50%;
+  top: 50%;
+  transform: translate(-50%, -50%);
+}
+.time-wrap2 {
+  transform-style: preserve-3d;
+  width: 40%;
+  height: 40%;
+  background: rgb(234, 234, 234);
+  border-radius: 10px;
+  position: absolute;
+  left: 50%;
+  transform: translateX(-50%) rotateZ(180deg) rotateY(180deg);
+  top: 56%;
+  opacity: 0.1;
+  box-shadow: 0 0 10px 2px white;
+}

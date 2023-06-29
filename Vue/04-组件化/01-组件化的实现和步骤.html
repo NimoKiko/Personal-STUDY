@@ -1,0 +1,46 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      组件的使用分成三个步骤：
+        - 创建组件构造器
+          Vue.extend()：创建组件构造器
+        - 注册组件
+          Vue.component()：注册组件
+        - 使用组件
+          在Vue实例的作用范围内使用组件
+     -->
+    <div id="app">{{msg}}
+      <my-cpn></my-cpn>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    // 1. 创建组件构造器
+    const cpn = Vue.extend({
+      template: `
+        <div>
+          <h2>这是标题</h2>
+          <p>这是内容</p>  
+          <p>这是内容</p>  
+          <p>这是内容</p>  
+        </div>
+      `
+    })
+    Vue.component('my-cpn',cpn);
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+    });
+  </script>
+</html>

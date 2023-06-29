@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+      父组件访问子组件：可以通过$children或者使用$refs
+
+      子组件访问父组件：可以同$parent访问父组件
+
+     -->
+    <div id="app">
+      <son></son>
+      <!--
+           在子组件上添加ref属性相当于给组件一个标记
+           可以使用$refs获取具体的组件并且访问子组件
+         -->
+      <son ref="cpn2"></son>
+      <button @click="btnClick">按钮</button>
+    </div>
+  </body>
+
+  <!-- 子组件 -->
+  <template id="son">
+    <div>
+      <h1>{{msg}}</h1>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    const son = {
+      template: "#son",
+      data() {
+        return {
+          msg: "子组件的信息",
+        };
+      },
+      methods: {
+        showMessage() {
+          console.log("show message");
+        },
+      },
+    };
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {
+        btnClick() {
+          // $children也能给子组件发送信息
+          this.$children[0].msg = "新的信息";
+          console.log(this.$refs.cpn2);
+          this.$refs.cpn2.msg = "组件二的新信息";
+        },
+      },
+      computed: {},
+      components: {
+        son,
+      },
+    });
+  </script>
+</html>

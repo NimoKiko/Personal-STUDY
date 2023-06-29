@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <div id="app">
+        <cpn1></cpn1>
+    </div>
+  </body>
+  <script src="../vue.js"></script>
+  <script>
+    // 全局组件注册语法糖
+    Vue.component('cpn1',{
+        template: `
+        <div>
+            <h2>我是CPN1</h2>
+            <p>我是内容</p>
+            <p>我是内容</p>
+            <p>我是内容</p>
+        </div>
+        `
+    })
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+      components: {
+        // 注册局部组件语法糖
+        cpn2: {
+          template: `
+            <div>
+                <h2>我是CPN2</h2>
+                <p>我是内容</p>
+                <p>我是内容</p>
+                <p>我是内容</p>
+            </div>
+        `,
+        },
+      },
+    });
+  </script>
+</html>

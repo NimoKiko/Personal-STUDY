@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      * {
+        margin: 0;
+        padding: 0;
+      }
+      html,
+      body {
+        height: 100%;
+        /* overflow: hidden; */
+      }
+      #inner1 {
+        position: relative;
+        left: 100px;
+        top: 200px;
+        background: deeppink;
+        width: 300px;
+        height: 200px;
+      }
+      #inner2 {
+        position: absolute;
+        left: 100px;
+        top: 50px;
+        background: deepskyblue;
+        width: 150px;
+        height: 230px;
+      }
+    </style>
+  </head>
+  <body style="height: 3000px; width: 3000px">
+    <div id="inner1">
+      inner1
+      <div id="inner2">inner2</div>
+    </div>
+    <script>
+      // 获取元素在页面中的位置
+      // 绝对位置：到body的距离
+      // 相对位置：到视口的距离
+      window.onscroll = function () {
+        var inner2 = document.getElementById("inner2");
+        // console.log(inner2.offsetLeft);
+        var pointRe = getPointRe(inner2);
+        var pointAb = getPointAb(inner2);
+        // console.log(pointAb);
+        // console.log(pointRe);
+
+        //如果body有margin和padding就会算不准
+        function getPointAb(node) {
+          //   console.log(node);
+          var x = 0;
+          var y = 0;
+          while (node) {
+            x += node.offsetLeft;
+            y += node.offsetTop;
+
+            node = node.offsetParent;
+          }
+          point = { x: x, y: y };
+          console.log(point);
+          return point;
+        }
+
+        function getPointRe(node) {
+          //   console.log(node);
+          var x = 0;
+          var y = 0;
+          while (node) {
+            x += node.offsetLeft;
+            y += node.offsetTop;
+
+            node = node.offsetParent;
+          }
+          var L =
+            document.documentElement.scrollLeft || document.body.scrollLeft;
+          var T = document.documentElement.scrollTop || document.body.scrollTop;
+
+          point = { x: x - L, y: y - T };
+          console.log(point);
+          return point;
+        }
+      };
+    </script>
+  </body>
+</html>

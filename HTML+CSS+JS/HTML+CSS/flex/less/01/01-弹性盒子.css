@@ -1,0 +1,53 @@
+* {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ul {
+  width: 800px;
+  border: 10px solid red;
+  display: flex;
+  /*
+      为容器设置的属性：
+        1. 设置弹性元素的排列方向
+          flex-direction:row(水平排列)默认 / column(垂直排列)
+        2. tips：
+          主轴：弹性元素的排列方向称为主轴
+          侧轴：与主轴垂直方向
+        3. 
+    */
+}
+li {
+  width: 100px;
+  height: 100px;
+  background-color: #bfa;
+  font-size: 50px;
+  text-align: center;
+  line-height: 100px;
+  /*
+      使用flex进行布局
+      - 弹性容器
+        - 要使用弹性盒，必须将元素设置为弹性容器
+          通过使用：
+          1. display:flex
+          2. display:inline-flex
+          哪个元素设置了display属性，哪个元素就是弹性容器
+        - 弹性元素
+          - 弹性元素为弹性容器的直接子元素，也成为弹性项
+          - 一个元素可以同时是弹性容器和弹性元素
+        
+        -为弹性元素设置的属性：
+          1. flex-grow: 指定弹性元素的伸展系数
+            - 当父元素有多余的空间时，子元素如何伸展
+          2. flex-shrink：指定弹性元素的收缩系数
+            - 当父元素不足以容纳所有子元素的时候，对子元素进行收缩
+    */
+  flex-grow: 1;
+}
+li:nth-child(2) {
+  background-color: pink;
+}
+li:nth-child(3) {
+  background-color: orangered;
+}
+/*# sourceMappingURL=./01-弹性盒子.css.map */

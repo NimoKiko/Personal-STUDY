@@ -1,0 +1,56 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <!-- 
+        插槽(slot)：
+          - 组件的插槽为了让组件封装更具扩展性
+        
+        使用方法：
+          - 在子组件中使用<slot>标签，然后在父组件中使用组件的地方，在组件的标签内的内容就会替换掉
+            子组件中slot标签的位置
+          - 如果在组件内写了多个标签，在替换时会全部替换
+     -->
+    <div id="app">
+      <cpn><button>按钮</button></cpn>
+      <cpn><span>哈哈哈哈</span></cpn>
+      <cpn><i>this is a word</i></cpn>
+      <cpn>
+        <h2>大标题</h2>
+        <h3>小标题</h3>
+        <h4>小小标题</h4>
+      </cpn>
+      <cpn></cpn>
+    </div>
+  </body>
+  <!-- 子组件 -->
+  <template id="cpn">
+    <div>
+      <h1>---子组件---</h1>
+      <slot><button>默认按钮</button></slot>
+    </div>
+  </template>
+  <script src="../vue.js"></script>
+  <script>
+    const cpn = {
+      template: "#cpn",
+      data() {
+        return {};
+      },
+    };
+    const app = new Vue({
+      el: "#app",
+      data: {
+        msg: "龚俊好帅！！",
+      },
+      methods: {},
+      computed: {},
+      components: { cpn },
+    });
+  </script>
+</html>

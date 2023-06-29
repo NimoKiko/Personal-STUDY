@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+
+        .box1{
+            width: 100px;
+            height: 100px;
+            background-color: aquamarine;
+            transition: all 1s linear;
+            margin: 200px auto;
+
+        }
+        .box1:hover{
+            /* 
+              对元素进行缩放：
+                transform: sacle()
+                 - scaleX()  在x轴进行缩放
+                 - scaleY()  在y轴进行缩放
+                 - scale()   在x，y轴进行缩放
+            */
+            transform: scale(3) ;
+            /* transform-origin: 变形原点 */
+            transform-origin: 0 0;
+        }
+    </style>
+</head>
+<body>
+    <div class="box1"></div>
+</body>
+</html>

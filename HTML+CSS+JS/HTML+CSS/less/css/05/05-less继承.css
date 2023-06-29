@@ -1,0 +1,25 @@
+/*
+  继承
+*/
+.center,
+.outer .inner1 {
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.outer {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  margin: 20px auto;
+  position: relative;
+}
+.outer .inner1 {
+  width: 100px;
+  height: 100px;
+  background: #bfa;
+}
+/*# sourceMappingURL=./05-less继承.css.map */

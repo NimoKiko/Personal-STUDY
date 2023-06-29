@@ -1,0 +1,106 @@
+@import "./triangle.less";
+/*
+混合：将一系列属性从一个规则集引入到另一个规则集的方式
+  1.普通混合
+    - 编译完成之后会输出到css文件中去
+    - 例：
+        .putInCenter{
+        width: 100px;
+        height: 100px;
+        background: #bfa;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        }
+  2.不带输出的混合
+    - 加上括号就不会输出到css文件中
+    - 例：
+        .putInCenter(){
+        width: 100px;
+        height: 100px;
+        background: #bfa;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        }
+  3.带参数的混合
+    - 在括号内写入参数，类似函数，但不是函数
+    - 例：
+        .putInCenter(@w,@h,@color){
+        width: @w;
+        height: @h;
+        background: @color;
+        position: absolute;
+        left: 0;
+        right: 0;
+        top: 0;
+        bottom: 0;
+        margin: auto;
+        }
+  4.命名参数
+    - 如果在带参数的混合中，设置了默认值，在使用的时候，如果只想要修改其中一个参数的值，
+      可以使用@参数名的方式指定给哪个参数传参
+
+*/
+// 不带输出的混合
+// 带参数的混合
+.putInCenter(@w:100px,@h:100px,@color:#e37070) {
+  //设置参数默认值
+  width: @w;
+  height: @h;
+  background: @color;
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: 0;
+  bottom: 0;
+  margin: auto;
+}
+.borderBox() {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  margin: 20px auto;
+  position: relative;
+}
+.outer {
+  .borderBox();
+  .inner1 {
+    .putInCenter(300px,300px,#bfa);
+  }
+  .inner2 {
+    // 命名参数
+    .putInCenter(@color:rgb(103, 171, 129));
+  }
+}
+/*
+  5.匹配模式
+    - 下方的这个T就是匹配模式
+*/
+.outer2 {
+  .borderBox();
+  .triangle {
+    .triangle(T,50px,red);
+  }
+}
+/*
+  6.arguments变量
+    - 和js中的arguments类似
+*/
+.border(@1,@2,@3){
+    border: @arguments
+}
+.outer3 {
+    .borderBox();
+    .inner3{
+        width: 100px;
+        height: 100px;
+        .border(1px, solid, rgb(70, 128, 56))
+    }
+}

@@ -1,0 +1,30 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+
+        /**
+         * 正则表达式：
+         *  
+         * 
+         * 
+         **/
+        reg = /a[bde]c/
+        console.log(reg.test('aec'));
+
+        var str = '1a2b3c4d5e6f7';
+        var res = str.split(/[A-z]/);
+        // console.log(res);
+
+        var str2 = 'hello world abc abc'
+        res = str2.search(/abc/);
+        console.log(res);
+    </script>
+</body>
+</html>

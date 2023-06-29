@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        var arr = ['龚俊','韩烨','温客行','林深','赵泛舟'];
+
+        /*
+            使用splice()会改变原数组
+            - 第一个参数：开始位置索引
+            - 第二个参数：删除的数量
+            - 第三个参数：插入的新数据
+        */
+        var res = arr.splice(0,0,'nihao');
+        // var res = arr.slice(1,5);
+        console.log(arr);
+    </script>
+</body>
+</html>

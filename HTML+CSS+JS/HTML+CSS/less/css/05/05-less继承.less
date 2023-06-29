@@ -1,0 +1,27 @@
+/*
+  继承
+*/
+@import "./center.less";
+.border() {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  margin: 20px auto;
+}
+
+.outer {
+  .border();
+  position: relative;
+
+  .inner1 {
+    &:extend(.center);
+    width: 100px;
+    height: 100px;
+    background: #bfa;
+  }
+  // .inner2 {
+  //   width: 300px;
+  //   height: 300px;
+  //   background: #bbc;
+  // }
+}

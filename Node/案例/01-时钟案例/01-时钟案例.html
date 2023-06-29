@@ -1,0 +1,90 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <link rel="stylesheet" href="./时钟案例.css">
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+      }
+      .container {
+        width: 100vw;
+        height: 100vh;
+        background: linear-gradient(120deg, #5289cc, #79cbca, #e684ae);
+        position: relative;
+      }
+      .time-wrap {
+        width: 40%;
+        height: 40%;
+        background: rgb(234, 234, 234);
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%);
+        top: 15%;
+        opacity: 0.6;
+        box-shadow: 0 0 10px 2px white;
+      }
+      .time {
+        text-align: center;
+        width: 100%;
+        font-size: 90px;
+        font-weight: bold;
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+      }
+      .time-wrap2 {
+        transform-style: preserve-3d;
+        width: 40%;
+        height: 40%;
+        background: rgb(234, 234, 234);
+        border-radius: 10px;
+        position: absolute;
+        left: 50%;
+        transform: translateX(-50%) rotateZ(180deg) rotateY(180deg);
+        top: 56%;
+        opacity: 0.1;
+        box-shadow: 0 0 10px 2px white;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="container">
+      <div class="time-wrap">
+        <div class="time">09 : 06 : 18</div>
+      </div>
+      <div class="time-wrap2">
+        <div class="time">09 : 06 : 18</div>
+      </div>
+    </div>
+  </body>
+  <script src="./时钟案例.js"></script>
+  <script>
+    var time = document.getElementsByClassName("time");
+    setInterval(() => {
+      let now = getTime();
+      for (let item of time) {
+        item.innerHTML = now;
+      }
+    }, 1000);
+    function getTime() {
+      var date = new Date();
+
+      let hour = date.getHours();
+      if (hour < 10) hour = "0" + hour;
+      let minutes = date.getMinutes();
+      if (minutes < 10) minutes = "0" + minutes;
+      let seconds = date.getSeconds();
+      if (seconds < 10) seconds = "0" + seconds;
+
+      let now = `${hour} : ${minutes} : ${seconds}`;
+      return now;
+    }
+  </script>
+</html>

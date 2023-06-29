@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var fun = function (x) {
+        if (x < 0) return false;
+        else {
+          let arr = [];
+          let str = x + "";
+          let newVal = "";
+          for (let i = str.length-1; i >= 0; i--) {
+            newVal += str.slice(i,i+1);
+            // console.log(str.slice(i,i+1));
+          }
+          console.log(newVal);
+          if (newVal == str) return true;
+          else return false;
+        }
+      };
+      //   var fun = function (num) {
+      //     let str = num + "";
+      //     let arr1 = [];
+      //     let arr2 = [];
+      //     console.log(str.length);
+      //     for(let i = 0 ; i < str.length ;i++) {
+      //         let item = str.slice(i,i+1);
+      //         arr1.push(item);
+      //     }
+      //     for(let item of arr1) {
+      //         arr2.unshift(item);
+      //     }
+      //     console.log(arr1.toString() == arr2.toString());
+      //   };
+      console.log(fun(1231));
+      //   console.log();
+    </script>
+  </body>
+</html>

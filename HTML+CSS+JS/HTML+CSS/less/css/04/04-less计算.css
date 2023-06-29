@@ -1,0 +1,15 @@
+/*
+  在less中可以进行加减乘除运算
+*/
+.outer {
+  width: 500px;
+  height: 500px;
+  border: 1px solid black;
+  margin: 20px auto;
+}
+.outer .inner {
+  width: 200px;
+  height: 200px;
+  border: 1px solid red;
+}
+/*# sourceMappingURL=./04-less计算.css.map */

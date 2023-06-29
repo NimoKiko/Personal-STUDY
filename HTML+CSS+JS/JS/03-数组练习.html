@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      // 创建Person类
+      class Person {
+        constructor(name, age) {
+          this.name = name;
+          this.age = age;
+        }
+      }
+
+      var per1 = new Person("龚俊", 30);
+      var per2 = new Person("韩烨", 22);
+      var per3 = new Person("温客行", 20);
+      var per4 = new Person("林深", 32);
+      var per5 = new Person("赵泛舟", 18);
+
+      var perArr = [per1, per2, per3, per4, per5];
+
+      /*
+            创建一搁函数，将perArr中满23周岁的person提取出来，封装到一个新数组里
+        */
+
+      function getArr(arr) {
+        let newArr = [];
+        // for(let item of arr){
+        //     if(item.age >= 23){
+        //         newArr.push(item);
+        //     }
+        // }
+        arr.forEach(element => {
+            if(element.age >= 23){
+                newArr.push(element);
+            }
+        });
+        return newArr;
+      }
+      let res = getArr(perArr);
+      console.log(res);
+    </script>
+  </body>
+</html>

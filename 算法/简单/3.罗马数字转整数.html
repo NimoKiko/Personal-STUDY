@@ -1,0 +1,137 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <script>
+      var romanToInt = function (s) {
+
+        let arr = [];
+        s = s.replace("IV","a");
+        s = s.replace("IX","b");
+        s = s.replace("XL","c");
+        s = s.replace("XC","d");
+        s = s.replace("CD","e");
+        s = s.replace("CM","f");
+        let result = 0;
+        for(let i = 0 ; i < s.length ; i++) {
+            result += loop(s.slice(i,i+1));
+        }
+        console.log(result);
+      };
+      var loop = function (params) {
+        switch (params) {
+                case "I":
+                    return 1;
+                    break;
+                case "V":
+                    return 5;
+                case "X":
+                    return 10;
+                case "L":
+                    return 50;               
+                case "C":
+                    return 100;  
+                case "D":
+                    return 500;
+                case "M":
+                    return 1000;
+                case "a":
+                    return 4;
+                case "b":
+                    return 9;
+                case "c":
+                    return 40;
+                case "d":
+                    return 90;
+                case "e":
+                    return 400;
+                case "f":
+                    return 900;
+            }
+      }
+    //   var romanToInt = function (s) {
+    //     let arr = [];
+    //     for (let i = 0; i < s.length; i++) {
+    //       let currentItem = s.slice(i, i + 1);
+    //       let preItem = s.slice(i - 1, i);
+    //       console.log(currentItem, preItem);
+    //       arr.push(currentItem);
+    //       if (currentItem == "V" || currentItem == "X") {
+    //         if (preItem == "I") {
+    //           arr.pop();
+    //           arr.pop();
+    //           arr.push(preItem + currentItem);
+    //         }
+    //       }
+    //       if (currentItem == "L" || currentItem == "C") {
+    //         if (preItem == "X") {
+    //           arr.pop();
+    //           arr.pop();
+    //           arr.push(preItem + currentItem);
+    //         }
+    //       }
+    //       if (currentItem == "D" || currentItem == "M") {
+    //         if (preItem == "C") {
+    //           arr.pop();
+    //           arr.pop();
+    //           console.log(arr);
+    //           arr.push(preItem + currentItem);
+    //         }
+    //       }
+    //     }
+    //     console.log(arr);
+    //     let result = 0;
+    //     for(let item of arr) {
+    //         switch (item) {
+    //             case "I":
+    //                 result += 1;
+    //                 break;
+    //             case "V":
+    //                 result += 5;
+    //                 break;
+    //             case "X":
+    //                 result += 10;
+    //                 break;
+    //             case "L":
+    //                 result += 50;
+    //                 break;
+    //             case "C":
+    //                 result += 100;
+    //                 break;
+    //             case "D":
+    //                 result += 500;
+    //                 break;
+    //             case "M":
+    //                 result += 1000;
+    //                 break;
+    //             case "IV":
+    //                 result += 4;
+    //                 break;
+    //             case "IX":
+    //                 result += 9;
+    //                 break;
+    //             case "XL":
+    //                 result += 40;
+    //                 break;
+    //             case "XC":
+    //                 result += 90;
+    //                 break;
+    //             case "CD":
+    //                 result += 400;
+    //                 break;
+    //             case "CM":
+    //                 result += 900;
+    //                 break;
+    //         }
+    //     }
+    //     console.log(result);
+    //   };
+      romanToInt("MCMXCIV");
+    </script>
+  </body>
+</html>
