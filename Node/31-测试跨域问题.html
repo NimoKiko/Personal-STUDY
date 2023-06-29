@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <button id="btn1">GET</button>
+    <button id="btn2">POST</button>
+  </body>
+  <script>
+    $("#btn1").on("click", function () {
+      $.ajax({
+        type: "GET",
+        url: "http://192.168.1.128/api/get",
+        data: {
+          name: "JulyAna",
+          age: 20,
+          gender: "女",
+        },
+        success: function (res) {
+          console.log(res);
+        },
+      });
+    });
+    $("#btn2").on("click", function () {
+      $.ajax({
+        type: "POST",
+        url: "http://192.168.1.128/api/post",
+        data: {
+          name: "Alice",
+          age: 22,
+          gender: "女",
+        },
+        success: function (res) {
+          console.log(res);
+        },
+      });
+    });
+  </script>
+</html>
