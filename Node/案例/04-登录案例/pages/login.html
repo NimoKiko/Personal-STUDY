@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <script src="https://cdn.staticfile.org/jquery/3.7.0/jquery.min.js"></script>
+  </head>
+  <body>
+    <div>账号：<input id="account" type="text" /></div>
+    <div>密码：<input id="psd" type="text" /></div>
+    <button id="login">登录</button>
+  </body>
+  <script>
+    $("#login").on("click", () => {
+      $.ajax({
+        type: "post",
+        url: "/api/login",
+        data: {
+          account: $("#account")[0].value,
+          password: $("#psd")[0].value,
+        },
+        success: function (res) {
+          if (res.state) {
+            confirm(res.msg);
+            window.location = "/";
+          } else {
+            confirm(res.msg);
+          }
+        },
+      });
+    });
+  </script>
+</html>
