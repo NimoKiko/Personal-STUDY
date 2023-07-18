@@ -48,5 +48,35 @@ my_set.remove("hiwh")
 '''
 set1 = {1,2,3}
 set2 = {1,5,6}
-set3 = set1.difference(set2)
+# set3 = set1.difference(set2)
+# print(set3)
+
+'''
+9.消除两个集合的差集
+  - set1.differenece_update(set2)
+  - 消除集合1中 与集合2相交的元素
+  - 集合1被修改,集合2不变化
+'''
+# set1.difference_update(set2)
+# print(set1,set2)
+
+'''
+10.合并两个集合
+  - set1.union(set2)
+  - 合并两个集合并返回一个新集合，原集合不变
+'''
+set3 = set1.union(set2)
 print(set3)
+
+'''
+11.统计集合的元素数量
+  - len(set)
+'''
+length = len(set3)
+print(length)
+
+'''
+12.集合的遍历(for循环)
+'''
+for item in set3:
+    print(item)
