@@ -1,0 +1,33 @@
+'''
+1.输出为python对象
+  - collect()算子: 将RDD各个分区的数据转变为List对象
+  - reduce(func)算子: 对RDD数据集按照你传入的逻辑进行聚合
+    - func(T, T) -> T
+    - 传入参数和返回值的类型相同
+  - take()算子: 取出RDD数据集的元素
+  - count()算子: 统计RDD内有多少数据
+'''
+from pyspark import SparkConf, SparkContext
+import os
+
+os.environ['PYSPARK_PYTHON'] = "D:/Technology/Tools/Python/InstallPath/python.exe"
+
+conf = SparkConf().setMaster("local[*]").setAppName("spark_test")
+
+sc = SparkContext(conf=conf)
+
+rdd = sc.parallelize([1, 2, 3, 4, 5, 6, 7, 8, 9])
+# reduce()算子
+# res = rdd.reduce(lambda a, b: a + b)
+# take()算子
+# res = rdd.take(5)
+
+# res = rdd.count()
+
+# print(res)
+
+'''
+2.将RDD数据输入到文件中
+  - saveAsTexeFile()算子
+'''
+sc.stop()
