@@ -1,0 +1,123 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #container1 {
+        width: 700px;
+        border: 1px solid black;
+        height: 400px;
+      }
+      #container2 {
+        width: 700px;
+        border: 1px solid black;
+        height: 400px;
+      }
+      .list {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        list-style: none;
+      }
+      .list > li {
+        height: 80px;
+        border: 1px solid black;
+        background-color: white;
+        color: black;
+        flex: 1;
+        text-align: center;
+        font-size: 32px;
+      }
+      .list > li.active {
+        color: white;
+        background-color: #5c5ca8;
+      }
+      .content {
+        padding: 0;
+        margin: 0;
+        display: flex;
+        list-style: none;
+      }
+      .content > li {
+        display: none;
+      }
+      .content > li.active {
+        display: block;
+        /* border: 1px solid red; */
+        width: 100%;
+        height: 320px;
+        background-color: orangered;
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container1">
+      <ul class="list">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <ul class="content">
+        <li class="active">111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>5555</li>
+      </ul>
+    </div>
+    <div id="container2">
+      <ul class="list">
+        <li class="active">1</li>
+        <li>2</li>
+        <li>3</li>
+        <li>4</li>
+        <li>5</li>
+      </ul>
+      <ul class="content">
+        <li class="active">111</li>
+        <li>222</li>
+        <li>333</li>
+        <li>444</li>
+        <li>5555</li>
+      </ul>
+    </div>
+
+    <script>
+      class Select {
+        constructor(selector, type) {
+          this.selector = document.getElementById(selector);
+          this.headerItems = this.selector.querySelectorAll(".list li");
+          this.contentItems = this.selector.querySelectorAll(".content li");
+          this.type = type;
+          this.listener();
+          console.log(this.headerItems, this.contentItems);
+        }
+
+        listener() {
+          for (let i = 0; i < this.headerItems.length; i++) {
+            this.headerItems[i].addEventListener(
+              this.type,
+              () => {
+                console.log(i);
+                for (let j = 0; j < this.headerItems.length; j++) {
+                  this.headerItems[j].classList.remove("active");
+                  this.contentItems[j].classList.remove("active");
+                }
+                this.headerItems[i].classList.add("active");
+                this.contentItems[i].classList.add("active");
+              },
+              false
+            );
+          }
+        }
+      }
+      new Select("container1", "click");
+      new Select("container2", "mouseover");
+    </script>
+  </body>
+</html>

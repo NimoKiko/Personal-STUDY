@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+  </head>
+  <body>
+    <button id="open">open</button>
+    <button id="close">close</button>
+    <script>
+      class Modal {
+        constructor() {
+          this.dom = null;
+          if (!Modal.instance) {
+            this.dom = document.createElement("div");
+            this.dom.innerHTML = "this is modal";
+            this.dom.id = "modal";
+            this.dom.style.display = "none";
+            this.dom.show = this.show.bind(this);
+            this.dom.hide = this.hide.bind(this);
+            document.body.appendChild(this.dom);
+            Modal.instance = this.dom;
+          }
+          return Modal.instance;
+        }
+        show() {
+          this.dom.style.display = "block";
+        }
+        hide() {
+          this.dom.style.display = "none";
+        }
+      }
+
+      const btnShow = document.getElementById("open");
+      const btnHide = document.getElementById("close");
+
+      btnShow.addEventListener("click", () => {
+        let modal = new Modal();
+        modal.show();
+      });
+      btnHide.addEventListener("click", () => {
+        let modal = new Modal();
+        modal.hide();
+      });
+    </script>
+  </body>
+</html>
