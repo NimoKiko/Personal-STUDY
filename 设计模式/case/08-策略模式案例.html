@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      #myList {
+        list-style: none;
+        padding: 0;
+      }
+      li {
+        display: flex;
+        justify-content: space-between;
+      }
+
+      .redItem {
+        background-color: red;
+      }
+      .yellowItem {
+        background-color: yellow;
+      }
+      .greenItem {
+        background-color: green;
+      }
+    </style>
+  </head>
+  <body>
+    <ul id="myList"></ul>
+    <script>
+      var list = [
+        {
+          title: "周末打折促销",
+          type: 1,
+        },
+        {
+          title: "自律给你自由",
+          type: 2,
+        },
+        {
+          title: "今日金价548元/克",
+          type: 3,
+        },
+        {
+          title: "周末去看电影吧",
+          type: 2,
+        },
+      ];
+      let stratagy = {
+        1: {
+          content: "审核中",
+          className: "yellowItem",
+        },
+        2: {
+          content: "审核通过",
+          className: "greenItem",
+        },
+        3: {
+          content: "审核失败",
+          className: "redItem",
+        },
+      };
+      myList.innerHTML = list
+        .map((item) => {
+          console.log(item.type);
+          // stratagy[item.type]();
+          return `
+            <li>
+              <div>${item.title}</div>
+              <div class="${stratagy[item.type].className}">${
+            stratagy[item.type].content
+          }</div>
+            </li>
+
+          `;
+        })
+        .join("");
+    </script>
+  </body>
+</html>
