@@ -22,6 +22,7 @@ class Subject {
   notify() {
     this.observer.forEach((item) => {
       // console.log(item);
+      // 调用观察者的方法(通知观察者)
       item.update();
     });
   }
@@ -45,6 +46,7 @@ subject.add(observer1);
 subject.add(observer2);
 subject.add(observer3);
 
+// 目标产生行为
 subject.notify();
 
 subject.remove(observer2);
