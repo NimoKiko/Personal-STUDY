@@ -1,4 +1,5 @@
 "use strict";
+Object.defineProperty(exports, "__esModule", { value: true });
 // 声明一个js对象
 // 开发中不使用
 let obj;
