@@ -15,22 +15,26 @@ body {
 
 // 设置主窗口的样式
 #main {
-  width: 360px;
+  width: 480px;
   height: 420px;
   margin: 50px auto;
   background-color: @bg-color;
   border: 10px solid black;
   border-radius: 30px;
+  position: relative;
   // display: flex;
   // flex-direction: column;
   // align-items: center;
   // justify-content: space-around;
 
   #stage {
+    position: absolute;
+    top: 10px;
+    left: 20px;
     width: 304px;
     height: 304px;
     border: 2px solid black;
-    margin: 20px auto;
+    // margin: 20px auto;
     // 开启相对定位
     position: relative;
 
@@ -50,7 +54,7 @@ body {
     #food{
       width: 10px;
       height: 10px;
-      background-color: black;
+      background-color: rgb(194, 47, 47);
       border: 1px solid @bg-color;
       border-radius: 100px;
       position: absolute;
@@ -60,9 +64,35 @@ body {
   }
 
   #score-panel {
-    width: 304px;
-    margin: 0px auto;
+    position: absolute;
+    left: 20px;
+    bottom: 30px;
+    width: 424px;
+    // margin: 0px auto;
     display: flex;
     justify-content: space-between;
+  }
+
+  #function-panel{
+    position: absolute;
+    right: 10px;
+    top: 10px;
+    border: 2px solid black;
+    border-radius: 5px;
+    height: 304px;
+    width: 120px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    div{
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 50px;
+      span{
+        margin-top: 10px;
+      }
+    }
+
   }
 }

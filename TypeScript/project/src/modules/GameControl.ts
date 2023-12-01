@@ -1,6 +1,7 @@
 import Snake from "./Snake";
 import Food from "./Food";
 import ScorePanel from "./ScorePanel";
+import AbilityPanel from "./AbilityPanel";
 
 /**
  *游戏控制器类
@@ -15,6 +16,8 @@ class GameControl {
   food: Food;
   // 记分牌
   scorePanel: ScorePanel;
+  // 功能牌
+  abilityPanel: AbilityPanel;
   // 存储蛇的移动方向
   direction: string = "";
   // 创建一个属性记录游戏是否结束
@@ -23,7 +26,8 @@ class GameControl {
   constructor() {
     this.snake = new Snake();
     this.food = new Food();
-    this.scorePanel = new ScorePanel(10,1);
+    this.scorePanel = new ScorePanel(10, 1);
+    this.abilityPanel = new AbilityPanel(30);
 
     this.init();
   }
@@ -102,7 +106,7 @@ class GameControl {
     }
 
     // 检查蛇是否吃到食物
-    this.checkEat(X,Y);
+    this.checkEat(X, Y);
 
     // 修改蛇的X，Y值
     try {
@@ -116,7 +120,7 @@ class GameControl {
 
     // 开启一个定时器
     this.isLive &&
-      setTimeout(this.run.bind(this), 300 - (this.scorePanel.level - 1) * 30);
+      setTimeout(this.run.bind(this), 300 - (this.scorePanel.speed - 1) * 30);
   }
 
   /**
@@ -127,10 +131,24 @@ class GameControl {
    * @memberof GameControl
    */
   checkEat(X: number, Y: number) {
+    // 如果计时器存在，则清除计时器
+    this.abilityPanel.timer && this.abilityPanel.stopTimer();
     if (X === this.food.X && Y === this.food.Y) {
       console.log("吃到食物");
       // 食物位置需要改变
       this.food.change();
+      // 触发食物功能
+      let action = this.food.getAbility();
+      if (action === "speedUp") {
+        this.abilityPanel.ability = "SPEED UP";
+        this.scorePanel.speedUp();
+        // 启动计时器
+        this.abilityPanel.startTimer();
+      }
+      if (action === "normal") {
+        this.abilityPanel.ability = "NORMAL";
+      }
+
       // 分数增加
       this.scorePanel.addScore();
       // 蛇增加一节

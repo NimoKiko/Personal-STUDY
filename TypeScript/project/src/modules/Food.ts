@@ -6,6 +6,11 @@
 class Food {
   // 定义一个属性表示食物对应的元素
   element: HTMLElement;
+  // 定义一个功能集
+  ability = {
+    0: "normal",
+    1: "speedUp",
+  };
   /**
    * Creates an instance of Food.
    * @memberof Food
@@ -49,6 +54,11 @@ class Food {
     this.element.style.left = left + "px";
     this.element.style.top = top + "px";
   }
+
+  getAbility() {
+    // 随机0-1
+    let num = Math.round(Math.random());
+    return (this.ability as any)[num];
+  }
 }
 export default Food;
-
