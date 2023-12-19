@@ -1,0 +1,260 @@
+* {
+  padding: 0;
+  margin: 0;
+  background: #f4f4f4;
+  box-sizing: border-box;
+}
+ul,
+li,
+img,
+span {
+  list-style: none;
+  background: transparent;
+}
+#container .top {
+  height: 30px;
+  width: 100%;
+  background: #e3e4e5;
+}
+#container .top .shortcut {
+  height: 30px;
+  width: 1190px;
+  background: transparent;
+  margin: 0 auto;
+  display: flex;
+  position: relative;
+}
+#container .top .shortcut .shortcut-ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+}
+#container .top .shortcut .shortcut-ul li {
+  display: flex;
+  align-items: center;
+}
+#container .top .shortcut .shortcut-1 .i-1 {
+  margin-left: 5px;
+  width: 15px;
+  height: 15px;
+}
+#container .top .shortcut .shortcut-1 span {
+  margin-left: 2px;
+  font-size: 12px;
+  color: #999999;
+  cursor: pointer;
+}
+#container .top .shortcut .shortcut-2 span {
+  margin-left: 20px;
+  font-size: 12px;
+  color: #999999;
+  cursor: pointer;
+}
+#container .top .shortcut .shortcut-3 {
+  position: absolute;
+  right: 0;
+}
+#container .top .shortcut .shortcut-3 li div {
+  width: 80px;
+  text-align: center;
+  background: transparent;
+  margin-left: 2px;
+  font-size: 12px;
+  color: #999999;
+  cursor: pointer;
+}
+#container .top .shortcut .shortcut-3 .saperator {
+  margin: 2px 2px;
+  border-left: 1px solid #999999;
+  height: 12px;
+}
+#container #header {
+  width: 100%;
+  height: 140px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+#container #header .header-content {
+  height: 100%;
+  width: 1190px;
+  background: white;
+  margin: 0 auto;
+  display: flex;
+  justify-content: space-between;
+}
+#container #header .header-content .logo {
+  width: 190px;
+  height: 100%;
+}
+#container #header .header-content .search {
+  width: 790px;
+  height: 100%;
+  background: white;
+  position: relative;
+}
+#container #header .header-content .search .search-wrap {
+  height: 36px;
+  width: 700px;
+  margin: 0px auto;
+  margin-top: 24px;
+  background: white;
+  display: flex;
+}
+#container #header .header-content .search .search-wrap .search-wrap-input {
+  width: 550px;
+  height: 100%;
+  border: 2px solid #e1251b;
+  background-color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+#container #header .header-content .search .search-wrap .search-wrap-input .search-input {
+  margin-left: 20px;
+  border: 0;
+  padding: 0;
+  outline: none;
+  background: white;
+  width: 440px;
+  height: 30px;
+}
+#container #header .header-content .search .search-wrap .search-wrap-input .i-camera {
+  margin-right: 20px;
+  cursor: pointer;
+}
+#container #header .header-content .search .search-wrap .search-wrap-input .search-btn {
+  width: 80px;
+  height: 100%;
+  background: #e1251b;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+#container #header .header-content .search .search-wrap .cart {
+  width: 120px;
+  height: 100%;
+  background: white;
+  border: 1px solid #eeeeee;
+  margin-left: 30px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: space-evenly;
+}
+#container #header .header-content .search .search-wrap .cart span {
+  font-size: 12px;
+  color: #e1251b;
+}
+#container #header .header-content .search .recommand {
+  width: 700px;
+  margin: 5px auto;
+  background: white;
+}
+#container #header .header-content .search .recommand ul {
+  display: flex;
+}
+#container #header .header-content .search .recommand ul li {
+  margin-left: 10px;
+  color: #999999;
+  font-size: 12px;
+  cursor: pointer;
+}
+#container #header .header-content .search .recommand ul :nth-child(1) {
+  margin-left: 0;
+}
+#container #header .header-content .search .recommand ul li:hover {
+  color: #e1251b;
+}
+#container #header .header-content .search .nav {
+  position: absolute;
+  bottom: 0;
+  width: 790px;
+  height: 40px;
+  background: white;
+}
+#container #header .header-content .search .nav ul {
+  height: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+#container #header .header-content .search .nav ul li {
+  cursor: pointer;
+  font-size: 15px;
+}
+#container #header .header-content .search .nav ul li:hover {
+  color: #e1251b;
+}
+#container #header .header-content .code-2d {
+  width: 190px;
+  height: 100%;
+  background: white;
+}
+#container .f-page {
+  width: 1190px;
+  height: 470px;
+  margin: 0 auto;
+  margin-top: 10px;
+  display: flex;
+}
+#container .f-page .item-menu,
+#container .f-page .swiper-small,
+#container .f-page .user-board {
+  width: 190px;
+  height: 100%;
+  background: #3766be;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+#container .f-page .swiper-big {
+  width: 590px;
+  height: 100%;
+  background: #3766be;
+  margin-left: 10px;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+#container .f-page .swiper-small {
+  display: flex;
+  flex-direction: column;
+  background: none;
+  box-shadow: none;
+  justify-content: space-between;
+}
+#container .f-page .swiper-small div {
+  width: 100%;
+  height: 150px;
+  background: #3766be;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+}
+#container .f-page .swiper-small,
+#container .f-page .user-board {
+  margin-left: 10px;
+}
+#container .j_app {
+  width: 1190px;
+  background: transparent;
+  margin: 0 auto;
+}
+#container .j_app .seckill {
+  margin-top: 30px;
+  width: 1190px;
+  height: 260px;
+  background: white;
+  box-shadow: 0 1px 3px rgba(0, 0, 0, 0.1);
+  display: flex;
+}
+#container .j_app .gap {
+  width: 1190px;
+  height: 40px;
+  background: transparent;
+  margin: 20px auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+#container .j_app .gap span {
+  font-weight: bold;
+  font-size: 24px;
+  color: #3d3d3d;
+}
+/*# sourceMappingURL=./index.css.map */

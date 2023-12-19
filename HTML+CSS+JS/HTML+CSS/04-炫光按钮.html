@@ -1,0 +1,97 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Document</title>
+    <style>
+      body {
+        margin: 0;
+        padding: 0;
+        background-color: black;
+      }
+      #container {
+        width: 300px;
+        height: 300px;
+        margin: 300px auto;
+        position: relative;
+      }
+      .btn {
+        width: 150px;
+        height: 50px;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        margin: auto;
+        border-radius: 100px;
+        border: none;
+        /* background: linear-gradient(
+          to right,
+          #ff105f,
+          #ffad06,
+          #5d70db,
+          #4ddedc,
+          #ffad06,
+          #ff105f
+        ); */
+        background-size: 400%;
+        transition: 1s all;
+      }
+      .btn:hover {
+        animation: colorAnimation 8s infinite linear;
+      }
+      @keyframes colorAnimation {
+        0% {
+          background-position: 0%;
+        }
+        100% {
+          background-position: 400%;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div id="container">
+      <button class="btn">BUTTON</button>
+    </div>
+
+    <script>
+      // 获取随机颜色
+      function color() {
+        let r = Math.floor(Math.random() * 256);
+        let g = Math.floor(Math.random() * 256);
+        let b = Math.floor(Math.random() * 256);
+        // body.style.backgroundColor = `rgb(${r},${g},${b})`;
+        return `rgb(${r},${g},${b})`;
+      }
+      let btn = document.querySelector(".btn");
+      btn.style.backgroundSize = "400%";
+      // console.log(btn);
+      let timer = null;
+      btn.addEventListener("mouseover", () => {
+        timer = setInterval(() => {
+          let colors = [];
+          for (let i = 0; i < 10; i++) {
+            colors.push(color());
+          }
+          // 生成0-360之间的随机数
+          // let deg = Math.floor(Math.random() * 361);
+          btn.style.background = `
+          linear-gradient(to right,${colors[0]},${colors[1]},${colors[2]},${colors[3]},${colors[4]},${colors[5]},${colors[6]},${colors[7]},${colors[8]},${colors[9]})
+          `;
+          btn.style.backgroundSize = "400%";
+          btn.style.transition = "1s all";
+        }, 100);
+      });
+
+      btn.addEventListener("mouseout", () => {
+        clearInterval(timer);
+      });
+
+      // btn.style.background =
+      //   "linear-gradient(to right, #ff105f, #ffad06, #5d70db, #4ddedc, #ffad06, #ff105f)";
+    </script>
+  </body>
+</html>
