@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Document</title>
+  <style>
+    #card{
+      width: 200px;
+      height: 250px;
+      background: rgb(221, 221, 221);
+      margin: 100px auto;
+      display: flex;
+      flex-direction: column;
+    }
+    .row{
+      width: 150px;
+      margin: 10px auto;
+      display: flex;
+    }
+    .btn{
+      justify-content: center;
+    }
+    
+  </style>
+</head>
+<body>
+  <div id="card">
+    <div class="row">
+      <span class="title">商品：</span>
+      <span class="content">Web前端课程</span>
+    </div>
+    <div class="row">
+      <span class="title">售价：</span>
+      <span class="content">8.88元</span>
+    </div>
+    <div class="row">
+      <span class="title">地址：</span>
+      <span class="content">青黄不街</span>
+    </div>
+    <div class="row btn">
+      <button id="btn">点击购买</button>
+    </div>
+  </div>
+
+  <script>
+    let btn = document.querySelector('#btn');
+    btn.addEventListener('click',() => {
+      window.open('http://127.0.0.1:5500/HTML+CSS+JS/JS%E9%AB%98%E7%BA%A7/case/01-%E6%94%AF%E4%BB%9810s%E5%80%92%E8%AE%A1%E6%97%B6/success.html')
+    })
+  </script>
+</body>
+</html>
