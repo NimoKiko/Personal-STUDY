@@ -1,0 +1,85 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>爆炸三角区</title>
+    <style>
+      .box {
+        margin: 20px auto;
+        width: 500px;
+        height: 500px;
+        /* border: 1px solid black; */
+      }
+      canvas {
+        border: 1px solid black;
+      }
+      .control-panle {
+        position: fixed;
+        top: 20px;
+        left: 20px;
+        width: 150px;
+        border-radius: 5px;
+        box-shadow: 0 0 5px rgb(166, 166, 166);
+      }
+      .control-panle .title {
+        font-size: 10px;
+        margin-left: 5px;
+      }
+      .point {
+        display: flex;
+        flex-direction: column;
+      }
+      .pointInput {
+        width: 80%;
+        height: 15px;
+        margin: 5px;
+      }
+      .btn {
+        position: fixed;
+        top: 190px;
+        left: 20px;
+      }
+      .select-box {
+        margin: 5px;
+      }
+      .select-box select {
+        font-size: 12px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="box">
+      <canvas id="canvas" width="520" height="520"></canvas>
+    </div>
+    <div class="control-panle">
+      <div class="select-box">
+        <select name="sift" id="sift">
+          <option value="methane">甲烷</option>
+          <option value="ethane">乙烷</option>
+          <option value="propane">丙烷</option>
+          <option value="butane">丁烷</option>
+          <option value="ethylene">乙烯</option>
+          <option value="acetylene">乙炔</option>
+          <option value="hydrogen">氢</option>
+          <option value="ammonia">氨</option>
+          <option value="carbonMonoxide">一氧化碳</option>
+          <option value="propylene">丙烯</option>
+        </select>
+      </div>
+      <span class="title">三元点坐标</span>
+      <div class="point">
+        <span class="title">Point</span>
+        <input type="text" class="pointInput" value="30" />
+        <input type="text" class="pointInput" value="40" />
+        <input type="text" class="pointInput" value="30" />
+      </div>
+    </div>
+    <div class="btn">
+      <button id="btn">绘制</button>
+    </div>
+    <script src="./ingredients.js"></script>
+    <script src="./test.js"></script>
+  </body>
+</html>
