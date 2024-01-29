@@ -10,7 +10,7 @@
   修改时间：
 -->
 <template>
-  <svg :style="{ width,height }">
+  <svg :style="{ width, height }">
     <use :xlink:href="prefix + name" :fill="color"></use>
   </svg>
 </template>
@@ -20,7 +20,7 @@ defineProps({
   // xlink:href属性值前缀
   prefix: {
     type: String,
-    default: "#icon-",
+    default: '#icon-',
   },
   // 接收父组件传来的svg图标名
   name: {
@@ -30,18 +30,18 @@ defineProps({
   // 接收父组件传来的svg图标颜色
   color: {
     type: String,
-    default: "",
+    default: '',
   },
   // 接收父组件传来的svg图标大小
   width: {
     type: String,
-    default: "16px",
+    default: '16px',
   },
   height: {
     type: String,
-    default: "16px",
+    default: '16px',
   },
-});
+})
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->
