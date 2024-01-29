@@ -1,26 +1,20 @@
 <template>
   <div class="app">
     <h2>我是app组件</h2>
+    <Child></Child>
+    <Hello></Hello>
   </div>
 </template>
 
 <script setup lang="ts" name="App">
 import { RouterView, RouterLink } from "vue-router";
 import { ref, reactive } from "vue";
-import axios from "axios";
-
-async function request() {
-  let data = await axios.get(
-    // 获取全民k歌的音乐的api
-    // "https://api.uomg.com/api/get.kg?songurl=https://kg.qq.com/node/play?s=H54B1JH5r9CXLHIf"
-    // 
-    "https://api.uomg.com/api/qq.joingroup?qid=914713127"
-  );
-  console.log(data);
-}
-request();
-
-
+import Child from "./Child.vue"
+/**
+ * 
+ * 
+ * 
+ */
 </script>
 <style>
 /* 写样式 */
