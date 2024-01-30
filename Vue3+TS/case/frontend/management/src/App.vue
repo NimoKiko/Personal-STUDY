@@ -1,18 +1,15 @@
 <template>
   <div id="app">
-    <div class="inner">
-      <svg-icon name="phone" color="red" width="100px" height="100px"></svg-icon>
-    </div>
+    <router-view></router-view>
   </div>
 </template>
 <script setup lang="ts" name="App">
-import { RouterLink, RouterView } from "vue-router";
-
+import { RouterLink, RouterView } from 'vue-router'
+import { ref } from 'vue'
 </script>
 <style scoped lang="less">
-#app{
-  padding: 10px;
-  background-color: #ddd;
-  border-radius: 10px;
+#app {
+  margin: 0;
+  padding: 0;
 }
 </style>

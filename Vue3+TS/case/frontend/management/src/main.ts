@@ -2,8 +2,8 @@
 
 import { createApp } from 'vue'
 import { createPinia } from 'pinia'
-
 import App from '@/App.vue'
+// 引入路由
 import router from '@/router'
 // 导入element-plus
 import ElementPlus from 'element-plus'
@@ -18,6 +18,7 @@ import gloableComponents from '@/components/GlobalComponents'
 const app = createApp(App)
 
 app.use(createPinia())
+// 注册路由
 app.use(router)
 // 使用element-plus
 app.use(ElementPlus, {

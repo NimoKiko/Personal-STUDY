@@ -4,7 +4,7 @@ import { ElMessage } from 'element-plus'
 
 const request = axios.create({
   // 配置基础路径
-  baseURL: import.meta.env.VITE_BASE_API,
+  baseURL: import.meta.env.VITE_SERVE + import.meta.env.VITE_BASE_API,
   timeout: 5000, // 请求超时
 })
 // 请求拦截器

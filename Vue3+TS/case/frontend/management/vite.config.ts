@@ -2,10 +2,10 @@ import { fileURLToPath, URL } from 'node:url'
 
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
-import VueSetupExtend from "vite-plugin-vue-setup-extend"
+import VueSetupExtend from 'vite-plugin-vue-setup-extend'
 // npm i vite-plugin-sv-icons -D
 // npm i fast-glob -D
-import { createSvgIconsPlugin } from "vite-plugin-svg-icons"
+import { createSvgIconsPlugin } from 'vite-plugin-svg-icons'
 import path from 'path'
 
 // https://vitejs.dev/config/
@@ -15,12 +15,19 @@ export default defineConfig({
     vue(),
     createSvgIconsPlugin({
       iconDirs: [path.resolve(process.cwd(), 'src/assets/icons')],
-      symbolId: 'icon-[dir]-[name]'
-    })
+      symbolId: 'icon-[dir]-[name]',
+    }),
   ],
   resolve: {
     alias: {
-      '@': fileURLToPath(new URL('./src', import.meta.url))
-    }
-  }
+      '@': fileURLToPath(new URL('./src', import.meta.url)),
+    },
+  },
+  css: {
+    preprocessorOptions: {
+      less: {
+        math: 'always', // 括号内才使用数学计算
+      },
+    },
+  },
 })
