@@ -6,17 +6,23 @@ export interface loginForm {
 
 // 登录接口返回的数据类型
 export interface loginResponseData {
-  state: number
-  msg: string
-  token: string
+  code: number
+  message: string
+  data: string
+  ok: boolean
 }
 // 定义服务器返回用户信息相关的数据类型
 export interface userResponseData {
-  state: number
-  msg: string
+  code: number
+  message: string
   data: {
-    id: number
     username: string
-    password: string
   }
+  ok: boolean
+}
+// 退出登录接口返回数据数据的类型
+export interface logoutResponseData {
+  code: number
+  message: string
+  ok: boolean
 }

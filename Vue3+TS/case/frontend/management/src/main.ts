@@ -1,7 +1,7 @@
 // import './assets/main.css'
-
 import { createApp } from 'vue'
-import { createPinia } from 'pinia'
+// 引入pinia
+import pinia from '@/stores'
 import App from '@/App.vue'
 // 引入路由
 import router from '@/router'
@@ -14,12 +14,14 @@ import { zhCn } from 'element-plus/es/locales.mjs'
 import 'virtual:svg-icons-register'
 // 导入全局组件注册的ts文件
 import gloableComponents from '@/components/GlobalComponents'
-
+// 创建应用
 const app = createApp(App)
-
-app.use(createPinia())
+// 注册pinia
+app.use(pinia)
 // 注册路由
 app.use(router)
+// 引入路由鉴权的文件
+import './permission'
 // 使用element-plus
 app.use(ElementPlus, {
   locale: zhCn, //element-plus使用中文
@@ -32,9 +34,3 @@ app.use(gloableComponents)
 // app.component('svg-icon', SvgIcon)
 // 挂载应用
 app.mount('#app')
-
-const fun = () => {
-  console.log('love')
-}
-
-fun()

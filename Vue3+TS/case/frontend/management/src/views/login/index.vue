@@ -14,21 +14,26 @@
     <el-row>
       <el-col :span="12" :xs="0"></el-col>
       <el-col :span="12" :xs="24">
-        <el-form class="login-form">
+        <el-form
+          :model="loginForms"
+          :rules="rules"
+          class="login-form"
+          ref="loginForm"
+        >
           <h1>Hello</h1>
           <h2>欢迎使用本产品</h2>
           <div class="form-wrap">
-            <el-form-item>
+            <el-form-item prop="username">
               <el-input
-                v-model="loginForm.username"
+                v-model="loginForms.username"
                 class="input"
                 style="margin-top: 20px"
                 :prefix-icon="User"
               ></el-input>
             </el-form-item>
-            <el-form-item>
+            <el-form-item prop="password">
               <el-input
-                v-model="loginForm.password"
+                v-model="loginForms.password"
                 class="input"
                 type="password"
                 :prefix-icon="Lock"
@@ -49,16 +54,52 @@
 
 <script setup lang="ts" name="Login">
 import { User, Lock } from '@element-plus/icons-vue'
-import { reactive } from 'vue'
-import { reqLogin } from '@/api/user/index'
-
-let loginForm = reactive({
+import { reactive, ref } from 'vue'
+import useUserStore from '@/stores/modules/user'
+import { useRouter } from 'vue-router'
+import { ElNotification } from 'element-plus'
+import { judgeNow } from '@/utils/Date'
+import type { FormInstance, FormRules } from 'element-plus'
+let loginForm = ref()
+let loginForms = reactive({
   username: 'admin',
-  password: '123',
+  password: '111111',
+})
+let userStore = useUserStore()
+let $router = useRouter()
+// 表单验证规则
+let rules = reactive({
+  username: [
+    { required: true, message: '请输入用户名', trigger: 'blur' },
+    { min: 3, max: 10, message: '长度在 3 到 10 个字符', trigger: 'blur' },
+  ],
+  password: [
+    { required: true, message: '请输入密码', trigger: 'blur' },
+    { min: 3, max: 20, message: '长度在 3 到 20 个字符', trigger: 'blur' },
+  ],
 })
 
-function login() {
-  console.log(loginForm)
+// 方法
+async function login() {
+  // 保证表单校验全部通过才发送请求
+  await loginForm.value.validate()
+  // 调用登录接口
+  try {
+    await userStore.userLogin(loginForms)
+    // 编程式导航跳转到首页
+    $router.push('/')
+    ElNotification({
+      type: 'success',
+      message: '登录成功',
+      title: `Hi,${judgeNow()}`,
+    })
+  } catch (error) {
+    // 登录失败的信息
+    ElNotification({
+      type: 'error',
+      message: (error as Error).message,
+    })
+  }
 }
 </script>
 
@@ -77,7 +118,6 @@ function login() {
     padding: 20px;
     position: relative;
     width: 60%;
-    height: 30vh;
     top: 30vh;
     background: linear-gradient(180deg, #e0e0e0 0%, #c0c0c0 100%);
     border-radius: 10px;

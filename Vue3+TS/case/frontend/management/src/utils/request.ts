@@ -1,15 +1,25 @@
 // 导入axios
 import axios from 'axios'
 import { ElMessage } from 'element-plus'
+import { GET_TOKEN } from './token'
+import useUserStore from '@/stores/modules/user'
 
 const request = axios.create({
   // 配置基础路径
-  baseURL: import.meta.env.VITE_SERVE + import.meta.env.VITE_BASE_API,
+  baseURL: import.meta.env.VITE_SERVE,
   timeout: 5000, // 请求超时
 })
 // 请求拦截器
 request.interceptors.request.use((config) => {
   // config配置对象，headers属性请求头，经常给服务器端携带公共参数
+  // 例如token，用户信息
+  // 获取token
+  const userStore = useUserStore()
+  const token = userStore.token
+  // 把token加入请求头
+  if (token) {
+    config.headers['Authorization'] = 'Bearer ' + token
+  }
   // 返回配置对象
   return config
 })

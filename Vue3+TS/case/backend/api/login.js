@@ -48,11 +48,13 @@ router.post("/login/getToken", (req, res) => {
 });
 
 /**
- * 获取用户信息接口
+ * 退出登录接口
  */
-router.get("/user/info", (req, res) => {
-  // 发送用户信息
-  res.send(req.auth);
+router.get("/login/logout", (req, res) => {
+  return res.send({
+    state: 1,
+    msg: "退出登录成功",
+  });
 });
 
 module.exports = router;

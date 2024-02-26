@@ -1,10 +1,14 @@
 // 统一管理项目用户相关的接口
 import request from '@/utils/request'
-import type { loginForm, loginResponseData } from './type'
+import type { loginForm, loginResponseData, userResponseData } from './type'
 // 统一管理接口
 enum API {
-  LOGIN_URL = '/login/getToken',
-  USERINFO_URL = '/user/info',
+  // 获取token的api
+  LOGIN_URL = '/admin/acl/index/login',
+  // 获取用户信息的api
+  USERINFO_URL = '/admin/acl/index/info',
+  // 退出登录的api
+  LOGOUT_URL = '/admin/acl/index/logout',
 }
 
 // 暴露请求函数
@@ -12,4 +16,6 @@ enum API {
 export const reqLogin = (data: loginForm) =>
   request.post<any, loginResponseData>(API.LOGIN_URL, data)
 // 获取用户信息
-export const getUserInfo = () => request.get(API.USERINFO_URL)
+export const getUserInfo = () => request.get<any, any>(API.USERINFO_URL)
+// 退出登录
+export const reqLogout = () => request.post<any, any>(API.LOGOUT_URL)
