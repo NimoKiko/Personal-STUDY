@@ -17,17 +17,14 @@
 <script setup lang="ts" name="App">
 import { ref, reactive } from "vue";
 import { RouterView, RouterLink } from "vue-router";
-
 /**
  * 路由组件：
  *  - 靠规则渲染出来的：
  *   eg:routes:[{path:"demo",component:Demo}]
  * 一般组件：
  *  - 一般组件是我们自己写的组件
- * 
+ *
  */
-
-
 </script>
 <style>
 /* 写样式 */

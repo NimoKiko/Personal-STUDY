@@ -2,21 +2,10 @@
 import { createApp } from "vue";
 // 引入App根组件
 import App from "./App.vue";
+// 引入pinia
+import { createPinia } from "pinia";
+const pinia = createPinia();
+import router from "./router";
 // createApp(App)用于创建应用，mount("#app")用于挂载应用
 const app = createApp(App);
-// app.component()用于注册全局组件
-// app.config 定义全局属性
-// app.config.globalProperties.x = 99
-// app.directive 可以自定义指令
-app.directive('beauty',(element,{value}) => {
-  element.innerText += value
-  element.style.color = 'red'
-  element.style.backgroundColor = "yellow"
-})
-// 挂载应用
-app.mount("#app");
-// 卸载应用
-// setTimeout(() => {
-//   app.unmount("#app")
-// },2000)
-
+app.use(pinia).use(router).mount("#app");

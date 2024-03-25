@@ -10,16 +10,14 @@
   修改时间：
 -->
 <template>
-  <input
-    type="text"
-    :value="name"
-    @input="emit('update:name', (<HTMLInputElement>$event.target).value)"
-  />
-  <input
+  <input type="text" :value="name" />
+  <!-- @input="emit('update:name', (<HTMLInputElement>$event.target).value)" -->
+  <!-- <input
     type="text"
     :value="password"
     @input="emit('update:password', (<HTMLInputElement>$event.target).value)"
-  />
+  /> -->
+  <!-- <h1>{{ name }}</h1> -->
 </template>
 
 <script setup lang="ts" name="HInput">
@@ -33,11 +31,11 @@
 // 1. 接收一个modelValue的props
 defineProps(["modelValue", "name", "password"]);
 // 2. 接收一个update:modelValue的emit
-const emit = defineEmits([
-  "update:modelValue",
-  "update:name",
-  "update:password",
-]);
+// const emit = defineEmits([
+//   "update:modelValue",
+//   "update:name",
+//   "update:password",
+// ]);
 </script>
 
 <!-- Add "scoped" attribute to limit CSS to this component only -->

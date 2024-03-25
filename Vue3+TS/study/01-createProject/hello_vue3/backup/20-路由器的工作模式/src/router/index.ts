@@ -1,5 +1,9 @@
 // 创建一个路由器并暴露出去
-import { createRouter, createWebHistory } from "vue-router";
+import {
+  createRouter,
+  createWebHistory,
+  createWebHashHistory,
+} from "vue-router";
 // 引入要呈现的组件
 import Home from "../components/Home.vue";
 import About from "../components/About.vue";
@@ -13,9 +17,8 @@ import News from "../components/News.vue";
  *  - hash模式：
  *    - 优点：不需要服务端配合处理路径问题
  *    - 缺点：url带有#号，看起来不太美观，且在SEO优化上不太友好
- * 
+ *
  */
-
 
 // 创建路由器
 const router = createRouter({

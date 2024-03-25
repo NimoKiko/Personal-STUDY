@@ -38,7 +38,6 @@ withDefaults(defineProps<{ list?: Persons }>(), {
 
 // tips: defineProps()为宏函数，不需要引入
 
-
 // 数据
 </script>
 
