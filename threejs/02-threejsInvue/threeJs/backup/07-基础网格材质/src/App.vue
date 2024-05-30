@@ -52,7 +52,18 @@ onMounted(() => {
 // 创建场景
 const scene = new THREE.Scene()
 // 设置场景的背景颜色
-scene.background = new THREE.Color('#262626')
+// scene.background = new THREE.Color('#262626')
+// 创建立体纹理
+// 方向：左右 上下 前后
+const cubeTexture = new THREE.CubeTextureLoader().load([
+  'textures/01.png',
+  'textures/01.png',
+  'textures/01.png',
+  'textures/01.png',
+  'textures/01.png',
+  'textures/01.png'
+])
+scene.background = cubeTexture
 // 创建相机(PerspectiveCamera透视相机)
 const camera = new THREE.PerspectiveCamera(90, window.innerWidth / window.innerHeight, 0.1, 1000)
 // 设置相机位置
@@ -60,11 +71,21 @@ camera.position.set(0, 5, 10)
 // 创建渲染器
 const renderer = new THREE.WebGLRenderer()
 
+// 创建纹理
+// const texture = new THREE.TextureLoader().load('/textures/01.png')
+// texture.wrapS = THREE.RepeatWrapping
+// texture.wrapT = THREE.RepeatWrapping
+// texture.repeat.set(1, 1)
+
+// 创建一个立方体
+// const geometry = new THREE.BoxGeometry(2, 2, 2)
+// const material = new THREE.MeshBasicMaterial({ color: controlData.color, map: texture })
+
 // 创建一个球体
-const geometry = new THREE.PlaneGeometry(1, 1)
-const material = new THREE.MeshBasicMaterial({ color: 0x00ff00, side: THREE.DoubleSide })
+const sphere = new THREE.SphereGeometry(4)
+const material = new THREE.MeshBasicMaterial({ color: controlData.color, envMap: cubeTexture })
 // 创建网格
-const cube = new THREE.Mesh(geometry, material)
+const cube = new THREE.Mesh(sphere, material)
 cube.position.set(0, 5, 0)
 scene.add(cube)
 
