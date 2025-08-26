@@ -1,20 +1,95 @@
-# 处理嵌套文件夹下的excel和csv文件工具
-
 import os
 import pandas as pd
-import sys
 import tkinter as tk
 from tkinter import filedialog, messagebox
 import chardet  # 用于检测文件编码
 
-def merge_excel_files(root_dir, output_file):
-    """
-    遍历文件夹结构，合并包含"报警"、"bj"或"baoj"的Excel和CSV文件
-    对于Excel文件，排除sheet名称中包含"sheet"字样的工作表
+# 主函数
+def main():
+  # 初始化
+  init()
+
+# 初始化函数
+def init():
+  print(f"----------------------------选择功能------------------------------------")
+  print(f"[1] 多层级文件夹下的excel文件合并")
+  print(f"[2] 文件删除")
+  print(f"[0] 退出程序")
+  input_num = int(input("请选择(回车以确定): "))
+  deal_func_level_1(input_num)
+
+# 一层处置函数
+def deal_func_level_1(num):
+  if num == 1:
+    print(f"-----------------------------选择合并模式---------------------------------")
+    print(f"[1] 合并全部文件")
+    print(f"[2] 合并包含指定关键字的文件")
+    print(f"[0] 返回上一级")
+    input_num = int(input("请选择(回车以确定): "))
+    deal_func_level_2(input_num)
+  
+  if num == 2:
+    print(f"功能仍在开发中...")
+    init()
+  if num == 0:
+    return 
     
-    参数:
-    root_dir: 要搜索的根目录
-    output_file: 合并后的输出文件路径
+# 二层处置函数
+def deal_func_level_2(num):
+  # 功能1：合并全部文件
+  if num == 1:
+    print(f"功能仍在开发中...")
+    init()
+  # 功能2：合并包含指定关键字的文件
+  if num == 2:
+    input_keyword = input("输入文件名中包含的指定关键字(多关键字以英文逗号 ',' 分隔): ")
+    # 获取关键字列表
+    target_keywords_list = input_keyword.split(',')
+    print(f"将合并文件名中包含【{input_keyword}】字样的文件...")
+    # 获取需要排除的文件内sheet名称
+    exclude_sheet_keyword = input("输入需要排除的sheet名称关键字: ")
+    print(f"将排除sheet名称中包含【{exclude_sheet_keyword}】字样的page...")
+    # 选择文件目录
+    try:
+      select_folder_path = select_folder()
+      if not select_folder_path:
+        print("未选择文件夹，程序退出...")
+        return 
+      
+      # 自动生成输出文件名
+      output_file = os.path.join(select_folder_path, "报警文件合并结果.xlsx")
+      
+      # 运行合并函数
+      result_file = merge_excel_files(select_folder_path, output_file, target_keywords_list, exclude_sheet_keyword)
+      
+      # 显示完成消息
+      if result_file:
+        messagebox.showinfo("完成", f"文件合并完成!\n保存位置: {result_file}")
+      
+    except Exception as e:
+      print(f"{str(e)}")
+    # 
+
+  if num == 0:
+    init()
+
+# 打开文件资源管理器
+def select_folder():
+    """打开文件夹选择对话框"""
+    root = tk.Tk()
+    root.withdraw()  # 隐藏主窗口
+    folder_path = filedialog.askdirectory(title="选择包含报警文件的文件夹")
+    return folder_path
+
+# 合并文件函数
+# root_dir: 要搜索的文件根目录
+# output_file: 合并后的输出文件路径
+# target_keyword_list: 目标文件所包含的关键字列表
+# exclude_sheet_keyword: 需要排除的页面的名称关键字
+def merge_excel_files(root_dir, output_file, target_keywords_list, exclude_sheet_keyword):
+    """
+    遍历文件夹结构,合并包含"报警"、"bj"或"baoj"的Excel和CSV文件
+    对于Excel文件,排除sheet名称中包含"sheet"字样的工作表
     """
     # 支持的扩展名列表
     valid_extensions = ['.xlsx', '.xlsm', '.xls', '.csv']
@@ -32,7 +107,7 @@ def merge_excel_files(root_dir, output_file):
                 
             # 检查文件名是否包含关键词
             lower_name = filename.lower()
-            if any(keyword in lower_name for keyword in ['报警', 'B', 'b']):
+            if any(keyword in lower_name for keyword in target_keywords_list):
                 filepath = os.path.join(foldername, filename)
                 try:
                     if ext == '.csv':
@@ -63,8 +138,8 @@ def merge_excel_files(root_dir, output_file):
                         
                         # 遍历所有sheet，排除名称包含"sheet"的
                         for sheet_name in xls.sheet_names:
-                            if 'sheet' in sheet_name.lower():
-                                print(f"跳过 {filename} 中的工作表: {sheet_name} (包含'sheet'字样)")
+                            if exclude_sheet_keyword in sheet_name.lower():
+                                print(f"跳过 {filename} 中的工作表: {sheet_name} (包含{exclude_sheet_keyword}字样)")
                                 continue
                                 
                             # 读取当前sheet
@@ -92,65 +167,9 @@ def merge_excel_files(root_dir, output_file):
     combined_df.to_excel(output_file, index=False)
     print(f"合并完成! 总行数: {len(combined_df)}")
 
-def select_folder():
-    """打开文件夹选择对话框"""
-    root = tk.Tk()
-    root.withdraw()  # 隐藏主窗口
-    folder_path = filedialog.askdirectory(title="选择包含报警文件的文件夹")
-    return folder_path
 
-def main():
-    # 尝试使用tkinter选择文件夹
-    try:
-        root_dir = select_folder()
-        if not root_dir:  # 用户取消了选择
-            print("未选择文件夹，程序退出")
-            return
-            
-        # 自动生成输出文件名
-        output_file = os.path.join(root_dir, "报警文件合并结果.xlsx")
-        
-        # 运行合并函数
-        result_file = merge_excel_files(root_dir, output_file)
-        
-        # 显示完成消息
-        if result_file:
-            messagebox.showinfo("完成", f"文件合并完成!\n保存位置: {result_file}")
-    
-    except ImportError:
-        # tkinter不可用，使用命令行参数
-        print("警告: 图形界面不可用，将使用命令行参数")
-        parser = argparse.ArgumentParser(description='合并报警文件工具')
-        parser.add_argument('-i', '--input', type=str, required=True, 
-                            help='要遍历的根目录路径')
-        parser.add_argument('-o', '--output', type=str, default='合并结果.xlsx', 
-                            help='输出文件名 (默认: 合并结果.xlsx)')
-        args = parser.parse_args()
-        
-        # 检查路径是否存在
-        if not os.path.exists(args.input):
-            print(f"错误: 路径 '{args.input}' 不存在!")
-            sys.exit(1)
-        
-        # 运行合并函数
-        merge_excel_files(args.input, args.output)
 
+# 入口函数
 if __name__ == "__main__":
-    # 添加命令行参数支持
-    import argparse
-    
-    # 检查是否已有命令行参数
-    if len(sys.argv) > 1:
-        parser = argparse.ArgumentParser(description='合并报警文件工具')
-        parser.add_argument('-i', '--input', type=str, help='要遍历的根目录路径')
-        parser.add_argument('-o', '--output', type=str, default='合并结果.xlsx', 
-                            help='输出文件名 (默认: 合并结果.xlsx)')
-        args = parser.parse_args()
-        
-        if args.input:
-            # 运行合并函数
-            merge_excel_files(args.input, args.output)
-            sys.exit(0)
-    
-    # 没有命令行参数时尝试图形界面
-    main()
+  # 执行main函数
+  main()
