@@ -11,7 +11,7 @@ app = FastAPI()
 
 app.include_router(example, prefix="/example", tags=["首次示例"])
 app.include_router(routeDecrator, prefix="/decrator", tags=["路径操作装饰器方法"])
-app.include_router(routeParams, prefix="/routeParams", tags=["路径参数"])
+app.include_router(routeParams, prefix="/pathParams", tags=["路径参数"])
 app.include_router(queryParams, prefix="/queryParams", tags=["查询参数"])
 
 

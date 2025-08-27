@@ -1,4 +1,4 @@
-from fastapi import APIRouter
+from fastapi import APIRouter, Path
 from enum import Enum
 
 
@@ -35,4 +35,9 @@ async def get_model(model_name: ModelName) -> dict:
 async def get_file(file_path: str):
     return {"file_path": file_path}
 
+
+# 使用Path类 来做额外校验
+@routeParams.get("/extraCheck/{item_id}")
+async def extra_check(item_id: int = Path(title="产品ID",ge=1, le=1000)):
+    return {"item_id": item_id}
 
