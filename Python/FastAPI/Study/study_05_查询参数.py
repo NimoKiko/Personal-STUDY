@@ -90,6 +90,6 @@ async def body_params(item_id:int = Path(...,ge=0), user_id: str = Query(...), i
     - 使用Pydantic模型来定义的类可以用来规定请求体的结构和数据类型,这种一般就是请求体参数
     - 在Pydantic模型中可以使用Field() 来做做额外的校验, Field() 只能在Pydantic模型中使用且引入自Pydantic类
 
-注意: get请求一般不携带请求体参数, post/put/pathc 请求一般可以携带请求体参数
+注意: get请求一般不携带请求体参数, post/put/pathc 请求一般可以携带请求体参数。
 '''
 
